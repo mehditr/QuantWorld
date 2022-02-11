@@ -7,7 +7,7 @@ education:
     year: 2011
 
 
-email: "mehditr64@gmail.com"
+email: ""
 highlight_name: true
 interests:
 - Quantitative Finance
@@ -26,10 +26,10 @@ social:
   link: /#contact
 - display:
     header: true
-  #icon: twitter
-  #icon_pack: fab
-  #label: Follow me on Twitter
-  #link: https://twitter.com/GeorgeCushen
+#icon: twitter
+#icon_pack: fab
+#label: Follow me on Twitter
+#link: https://twitter.com/GeorgeCushen
 #- icon: graduation-cap
 # icon_pack: fas
 #link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
@@ -45,4 +45,4 @@ title: Mohammad Torbati
 
 I am A data lover...
 
-#{{< icon name="download" pack="fas" >}} Download my {{< staticref #"uploads/resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
+{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
