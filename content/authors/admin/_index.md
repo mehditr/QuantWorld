@@ -45,4 +45,4 @@ title: Mohammad Torbati
 
 I am A data lover...
 
-{{< icon name="download" pack="fas" >}} Download my {{< staticref "uploads/resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
+#{{< icon name="download" pack="fas" >}} Download my {{< staticref #"uploads/resume.pdf" "newtab" >}}resumé{{< /staticref >}}.
