@@ -27,10 +27,7 @@ feature:
   icon_pack: fab
   name: Python
   
-  - description: 10%
-  icon: file-excel
-  icon_pack: fas
-  name: VBA-Excel
+
 
 - description: 100%
   icon: chart-line
