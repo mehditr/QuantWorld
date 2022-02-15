@@ -22,7 +22,7 @@ feature:
   name: R
   
   
-- description: 10%
+- description: 
   icon: python
   icon_pack: fab
   name: Python
@@ -32,12 +32,12 @@ feature:
   icon_pack: fas
   name: Excel - VBA
   
-- description: Expert
+- description: 
   icon: table
   icon_pack: fas
   name: SQL-MySql
   
-- description: 100%
+- description:
   icon: book                   
   icon_pack: fas
   name: Jupyter Notebook
