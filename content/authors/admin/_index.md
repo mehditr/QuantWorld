@@ -9,7 +9,7 @@ education:
 
 email: "mehditr64@gmail.com"
 highlight_name: true
-interests:
+Active in:
 - Quantitative Finance
 - Data Modelling
 - Statistics
