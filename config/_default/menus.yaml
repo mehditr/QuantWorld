@@ -7,7 +7,6 @@ main:
   - name: Home
     url: '#about'
     weight: 10
-    
   - name: Skills
     url: '#skills'
     weight: 20   
@@ -15,8 +14,6 @@ main:
 #   url: '#experience'
 #   weight: 20
 
-
-    
   - name: Accomplishments
     url: '#accomplishments'
     weight: 20
