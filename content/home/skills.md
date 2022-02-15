@@ -10,7 +10,7 @@ headless: true
 weight: 30
 
 title: Skills
-subtitle: IT and Industry Knowledge
+subtitle: IT Knowledge
 
 # Showcase personal skills or business features.
 # - Add/remove as many `feature` blocks below as you like.
