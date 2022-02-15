@@ -36,22 +36,36 @@ feature:
   icon: table
   icon_pack: fas
   name: SQL-MySql
-
-- description: 100%
-  icon: chart-line
-  icon_pack: fas
-  name: Statistical Modeling
-
-- description: 100%
-  icon: clipboard-check
-  icon_pack: fas
-  name: Machine Learning
   
 - description: 100%
-  icon: bullseye-arrow
+  icon: book                   
   icon_pack: fas
-  name: Risk Modeling
+  name: Jupyter Notebook
+
+#- description: 100%
+#  icon: chart-line
+#  icon_pack: fas
+#  name: Statistical Modeling
+
+#- description: 100%
+#  icon: clipboard-check
+#  icon_pack: fas
+#  name: Machine Learning
   
+#- description: 100%
+#  icon: code-branch                   
+#  icon_pack: fas
+#  name: Financial & Risk Modeling
+  
+#- description: 100%
+#  icon: chart-line                   
+#  icon_pack: fas
+#  name: Time series Forecasting
+  
+
+#code-branch
+#clipboard-check 
+#brain-circuit
 # Uncomment to use emoji icons.
 #- icon: ':smile:'
 #  icon_pack: emoji
