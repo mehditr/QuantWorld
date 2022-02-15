@@ -10,7 +10,7 @@ headless: true
 weight: 30
 
 title: Skills
-subtitle: IT
+subtitle: IT and Industry Knowledge
 
 # Showcase personal skills or business features.
 # - Add/remove as many `feature` blocks below as you like.
@@ -21,16 +21,16 @@ feature:
   icon_pack: fab
   name: R
   
-- description: 100%
-  icon: chart-line
-  icon_pack: fas
-  name: Statistics
-
   
 - description: 10%
   icon: python
   icon_pack: fab
   name: Python
+
+- description: 100%
+  icon: chart-line
+  icon_pack: fas
+  name: Statistics
 
 # Uncomment to use emoji icons.
 #- icon: ':smile:'
