@@ -16,7 +16,7 @@ subtitle: IT and Industry Knowledge
 # - Add/remove as many `feature` blocks below as you like.
 # - For available icons, see: https://wowchemy.com/docs/page-builder/#icons
 feature:
-- description: 90%
+- description: 
   icon: r-project
   icon_pack: fab
   name: R
@@ -46,6 +46,12 @@ feature:
   icon: clipboard-check
   icon_pack: fas
   name: Machine Learning
+  
+- description: 100%
+  icon: bullseye-arrow
+  icon_pack: fas
+  name: Risk Modeling
+  
 # Uncomment to use emoji icons.
 #- icon: ':smile:'
 #  icon_pack: emoji
