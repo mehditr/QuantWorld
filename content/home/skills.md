@@ -27,15 +27,20 @@ feature:
   icon_pack: fab
   name: Python
   
-- description: Expert
+- description: 
   icon: file-excel
   icon_pack: fas
   name: Excel - VBA
+  
+- description: Expert
+  icon: table
+  icon_pack: fas
+  name: SQL-MySql
 
 - description: 100%
   icon: chart-line
   icon_pack: fas
-  name: Statistics
+  name: Statistical Modeling
 
 - description: 100%
   icon: clipboard-check
