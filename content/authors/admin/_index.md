@@ -7,15 +7,14 @@ education:
     year: 2011
 
 
-email: ""
+email: "mehditr64@gmail.com"
 highlight_name: true
 interests:
 - Quantitative Finance
-- Data Science
 - Data Modelling
-- Decision Making
+- Statistics
 - Business Analysis
-- Philosophy of Science
+
 organizations:
 - name: IU International University
   url: https://www.iu.de/
