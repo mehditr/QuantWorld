@@ -33,7 +33,7 @@ feature:
   name: Statistics
 
 - description: 100%
-  icon: chart-line
+  icon: clipboard-check
   icon_pack: fas
   name: Machine Learning
 # Uncomment to use emoji icons.
