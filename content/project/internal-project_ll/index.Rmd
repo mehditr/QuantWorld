@@ -12,7 +12,7 @@ links:
 slides: The ggplot tutorial
 summary: An example of using the in-built project page.
 tags:
-- Deep Learning
+- Machine Learning
 title: GGPLOT
 url_code: ""
 url_pdf: ""
