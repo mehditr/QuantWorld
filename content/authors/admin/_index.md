@@ -11,8 +11,8 @@ email: "mehditr64@gmail.com"
 highlight_name: true
 interests:
 - Quantitative Finance
-- Data Modelling
-- Statistics
+- Data Science
+- Statistical Modeling
 - Business Analysis
 
 organizations:
