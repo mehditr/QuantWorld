@@ -41,6 +41,11 @@ feature:
   icon: book                   
   icon_pack: fas
   name: Jupyter Notebook
+  
+  - description:
+  icon: book                   
+  icon_pack: fas
+  name: PowerBI
 
 #- description: 100%
 #  icon: chart-line
