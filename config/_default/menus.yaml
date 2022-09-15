@@ -12,10 +12,10 @@ main:
     weight: 20 
   - name: Posts
     url: '#Posts'
-    weight: 30
+    weight: 45
   - name: Projects
     url: '#projects'
-    weight: 45
+    weight: 65
 #  - name: Courses
 #    url: courses/
 #    weight: 60
