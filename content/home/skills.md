@@ -44,7 +44,7 @@ feature:
   
   - description:
   icon: book                   
-  icon_pack: fas
+  icon_pack: fab
   name: PowerBI
 
 #- description: 100%
