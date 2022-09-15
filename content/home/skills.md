@@ -42,7 +42,7 @@ feature:
   icon_pack: fas
   name: Jupyter Notebook
   
-  - description:
+- description:
   icon: book                   
   icon_pack: fas
   name: Power BI
