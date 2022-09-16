@@ -23,15 +23,13 @@ url_video: ""
 This is the ggplot using an open-source article in finance and how to use it.
 
 ```{r}
-#install.packages("palmerpenguins")
-library(palmerpenguins)
+install.packages("palmerpenguins")
 library(ggplot2)
-
-# lets take a brief look at the dataset
 head(penguins)
 
 # now we can create a plot
 
 ggplot(penguins,aes(bill_length_mm,bill_depth_mm,color=species))+
   geom_point()
+
 ```
