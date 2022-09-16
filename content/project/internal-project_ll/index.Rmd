@@ -13,7 +13,7 @@ slides: The ggplot tutorial
 summary: An example of using the in-built project page.
 tags:
 - Machine Learning
-title: GGPLOT
+title: EDA on Cars
 url_code: ""
 url_pdf: ""
 url_slides: ""
@@ -24,12 +24,12 @@ This is the ggplot using an open-source article in finance and how to use it.
 
 ```{r}
 #install.packages("palmerpenguins")
-#library(ggplot2)
-#head(penguins)
-library(tidyverse)
-bike <- read.csv('bikeshare.csv')
+library(MASS)
+library(ggplot2)
+head(Cars93)
+
 # now we can create a plot
-head(bike)
+
 #ggplot(penguins,aes(bill_length_mm,bill_depth_mm,color=species))+
   #geom_point()
 
