@@ -24,12 +24,13 @@ This is the ggplot using an open-source article in finance and how to use it.
 
 ```{r}
 #install.packages("MASS")
-library(MASS)
-library(ggplot2)
-head(Cars93)
-
+#library(MASS)
+#library(ggplot2)
+#head(Cars93)
+library(tidyverse)
+bike<- read.csv('bikeshare.csv')
 # now we can create a plot
-
+head(bike)
 #ggplot(penguins,aes(bill_length_mm,bill_depth_mm,color=species))+
   #geom_point()
 
