@@ -8,12 +8,12 @@ links:
 - icon: github
   icon_pack: fab
   name: github material
-  url: https://twitter.com/georgecushen
+  url: ''
 slides: The ggplot tutorial
 summary: An example of using the in-built project page.
 tags:
 - Machine Learning
-title: EDA on Cars
+title: EDA on Cars datasets
 url_code: ""
 url_pdf: ""
 url_slides: ""
@@ -23,7 +23,7 @@ url_video: ""
 This is the ggplot using an open-source article in finance and how to use it.
 
 ```{r}
-#install.packages("palmerpenguins")
+#install.packages("MASS")
 library(MASS)
 library(ggplot2)
 head(Cars93)

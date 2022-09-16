@@ -8,12 +8,12 @@ links:
 - icon: github
   icon_pack: fab
   name: github material
-  url: https://twitter.com/georgecushen
+  url: ''
 slides: The ggplot tutorial
 summary: An example of using the in-built project page.
 tags:
 - Machine Learning
-title: GGPLOT
+title: EDA on Cars datasets
 url_code: ""
 url_pdf: ""
 url_slides: ""
@@ -24,25 +24,39 @@ url_video: ""
 
 
 <p>This is the ggplot using an open-source article in finance and how to use it.</p>
-<pre class="r"><code>#install.packages(&quot;palmerpenguins&quot;)
-library(palmerpenguins)
+<pre class="r"><code>#install.packages(&quot;MASS&quot;)
+library(MASS)
 library(ggplot2)
-
-# lets take a brief look at the dataset
-head(penguins)</code></pre>
-<pre><code>## # A tibble: 6 x 8
-##   species island bill_length_mm bill_depth_mm flipper_length_~ body_mass_g sex  
-##   &lt;fct&gt;   &lt;fct&gt;           &lt;dbl&gt;         &lt;dbl&gt;            &lt;int&gt;       &lt;int&gt; &lt;fct&gt;
-## 1 Adelie  Torge~           39.1          18.7              181        3750 male 
-## 2 Adelie  Torge~           39.5          17.4              186        3800 fema~
-## 3 Adelie  Torge~           40.3          18                195        3250 fema~
-## 4 Adelie  Torge~           NA            NA                 NA          NA &lt;NA&gt; 
-## 5 Adelie  Torge~           36.7          19.3              193        3450 fema~
-## 6 Adelie  Torge~           39.3          20.6              190        3650 male 
-## # ... with 1 more variable: year &lt;int&gt;</code></pre>
+head(Cars93)</code></pre>
+<pre><code>##   Manufacturer   Model    Type Min.Price Price Max.Price MPG.city MPG.highway
+## 1        Acura Integra   Small      12.9  15.9      18.8       25          31
+## 2        Acura  Legend Midsize      29.2  33.9      38.7       18          25
+## 3         Audi      90 Compact      25.9  29.1      32.3       20          26
+## 4         Audi     100 Midsize      30.8  37.7      44.6       19          26
+## 5          BMW    535i Midsize      23.7  30.0      36.2       22          30
+## 6        Buick Century Midsize      14.2  15.7      17.3       22          31
+##              AirBags DriveTrain Cylinders EngineSize Horsepower  RPM
+## 1               None      Front         4        1.8        140 6300
+## 2 Driver &amp; Passenger      Front         6        3.2        200 5500
+## 3        Driver only      Front         6        2.8        172 5500
+## 4 Driver &amp; Passenger      Front         6        2.8        172 5500
+## 5        Driver only       Rear         4        3.5        208 5700
+## 6        Driver only      Front         4        2.2        110 5200
+##   Rev.per.mile Man.trans.avail Fuel.tank.capacity Passengers Length Wheelbase
+## 1         2890             Yes               13.2          5    177       102
+## 2         2335             Yes               18.0          5    195       115
+## 3         2280             Yes               16.9          5    180       102
+## 4         2535             Yes               21.1          6    193       106
+## 5         2545             Yes               21.1          4    186       109
+## 6         2565              No               16.4          6    189       105
+##   Width Turn.circle Rear.seat.room Luggage.room Weight  Origin          Make
+## 1    68          37           26.5           11   2705 non-USA Acura Integra
+## 2    71          38           30.0           15   3560 non-USA  Acura Legend
+## 3    67          37           28.0           14   3375 non-USA       Audi 90
+## 4    70          37           31.0           17   3405 non-USA      Audi 100
+## 5    69          39           27.0           13   3640 non-USA      BMW 535i
+## 6    69          41           28.0           16   2880     USA Buick Century</code></pre>
 <pre class="r"><code># now we can create a plot
 
-ggplot(penguins,aes(bill_length_mm,bill_depth_mm,color=species))+
-  geom_point()</code></pre>
-<pre><code>## Warning: Removed 2 rows containing missing values (geom_point).</code></pre>
-<p><img src="{{< blogdown/postref >}}index_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+#ggplot(penguins,aes(bill_length_mm,bill_depth_mm,color=species))+
+  #geom_point()</code></pre>
