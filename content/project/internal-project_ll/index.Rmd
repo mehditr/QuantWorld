@@ -23,13 +23,14 @@ url_video: ""
 This is the ggplot using an open-source article in finance and how to use it.
 
 ```{r}
-install.packages("palmerpenguins")
-library(ggplot2)
-head(penguins)
-
+#install.packages("palmerpenguins")
+#library(ggplot2)
+#head(penguins)
+library(tidyverse)
+bike <- read.csv('bikeshare.csv')
 # now we can create a plot
-
-ggplot(penguins,aes(bill_length_mm,bill_depth_mm,color=species))+
-  geom_point()
+head(bike)
+#ggplot(penguins,aes(bill_length_mm,bill_depth_mm,color=species))+
+  #geom_point()
 
 ```
