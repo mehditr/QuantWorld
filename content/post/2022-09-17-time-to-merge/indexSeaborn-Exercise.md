@@ -361,7 +361,7 @@ In general do not worry about coloring,styling, or sizing matching up exactly. I
 
 ```python
 from IPython.core.display import Image
-Image('C:/Users/Mehdi/Desktop/blog/Seaborn-Exercise_files/Seaborn-Exercise_10_1.png')
+Image('https://www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png'')
 ```
 ```python
 # CODE HERE TO RECREATE THE PLOT SHOWN ABOVE
@@ -381,7 +381,7 @@ sns.scatterplot(x='DAYS_BIRTH',y='DAYS_EMPLOYED', data=df_res)
 
 
     
-![png](./Seaborn-Exercise_10_1.png)
+![png](././index_1_0.png)
     
 
 
