@@ -5,7 +5,7 @@ date: '2022-09-17'
 slug: indexSeaborn-Exercise
 categories: []
 tags: []
-subtitle: ''
+subtitle: 'Excercises'
 summary: ''
 authors: []
 lastmod: '2022-09-17T01:07:35+01:00'
