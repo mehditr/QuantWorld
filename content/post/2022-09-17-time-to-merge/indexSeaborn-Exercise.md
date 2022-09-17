@@ -358,7 +358,7 @@ In general do not worry about coloring,styling, or sizing matching up exactly. I
 **The scatterplot attempts to show the relationship between the days employed versus the age of the person (DAYS_BIRTH) for people who were not unemployed. Note, to reproduce this chart you must remove unemployed people from the dataset first. Also note the sign of the axis, they are both transformed to be positive. Finally, feel free to adjust the *alpha* and *linewidth* parameters in the scatterplot since there are so many points stacked on top of each other.** 
 
 #<img src="task_one.jpg">
-<img src="C:/Users/Mehdi/Desktop/blog/Seaborn-Exercise_files/Seaborn-Excercise_20_10.png">
+<img src="C:\Users\Mehdi\Desktop\QuantWorld\static\Seaborn-Exercise_files\Seaborn-Excercise_20_10.png">
 
 
 
