@@ -18,11 +18,7 @@ title: Display Jupyter Notebooks with Academic
 from IPython.core.display import Image
 Image('https://www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png')
 ```
-```python
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-```
+
 
 
 
