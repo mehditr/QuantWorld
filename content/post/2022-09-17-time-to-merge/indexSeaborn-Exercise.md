@@ -441,7 +441,10 @@ plt.legend(loc=(1.03,0.5), title='FLAG_OWN_REALTY')
 
     <matplotlib.legend.Legend at 0x1b5d33efc10>
 
-
+```python
+from IPython.core.display import Image
+Image('C:\Users\Mehdi\Desktop\blog\Seaborn-Exercise_files\Seaborn-Exercise_10_1.png')
+```
 
 
     
