@@ -361,7 +361,7 @@ In general do not worry about coloring,styling, or sizing matching up exactly. I
 
 ```python
 from IPython.core.display import Image
-Image('https://www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png'')
+Image('https://www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png')
 ```
 ```python
 # CODE HERE TO RECREATE THE PLOT SHOWN ABOVE
