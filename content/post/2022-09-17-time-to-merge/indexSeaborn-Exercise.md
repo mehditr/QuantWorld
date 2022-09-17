@@ -413,7 +413,7 @@ plt.xlabel('Age in Years')
 
 
     
-![png](Seaborn-Exercise_files/Seaborn-Exercise_13_1.png)
+![png](./Seaborn-Exercise_13_1.png)
     
 
 
@@ -447,7 +447,7 @@ plt.legend(loc=(1.03,0.5), title='FLAG_OWN_REALTY')
 
 
     
-![png](Seaborn-Exercise_files/Seaborn-Exercise_16_1.png)
+![png](./Seaborn-Exercise_16_1.png)
     
 
 
@@ -473,7 +473,7 @@ sns.heatmap(df_corr.corr(),)
 
 
     
-![png](Seaborn-Exercise_files/Seaborn-Exercise_19_1.png)
+![png](./Seaborn-Exercise_19_1.png)
     
 
 
@@ -491,6 +491,6 @@ sns.heatmap(df_corr.corr(),)
 
 
     
-![png](Seaborn-Exercise_files/Seaborn-Exercise_20_1.png)
+![png](./Seaborn-Exercise_20_1.png)
     
 
