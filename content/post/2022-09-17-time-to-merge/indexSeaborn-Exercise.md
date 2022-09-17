@@ -382,6 +382,10 @@ sns.scatterplot(x='DAYS_BIRTH',y='DAYS_EMPLOYED', data=df_res)
 
     
 ![png](./index_1_0.png)
+
+<img src = "/Seaborn-Exercise_10_1"
+
+![png](./Seaborn-Exercise_10_1.png)
     
 
 
