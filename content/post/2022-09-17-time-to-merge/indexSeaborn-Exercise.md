@@ -379,7 +379,7 @@ sns.scatterplot(x='DAYS_BIRTH',y='DAYS_EMPLOYED', data=df_res)
 
     
 ![png](
-<img src="C:/Users/Mehdi/Desktop/QuantWorld/static/Seaborn-Exercise_files/Seaborn-Excercise_20_10.png">
+<img src="C:/Users/Mehdi/Desktop/QuantWorld/static/Seaborn-Exercise_files/Seaborn-Excercise_20_10.png" />
 )
     
 
