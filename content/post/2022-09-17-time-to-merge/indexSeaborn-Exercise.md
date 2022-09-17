@@ -361,7 +361,7 @@ In general do not worry about coloring,styling, or sizing matching up exactly. I
 
 ```python
 from IPython.core.display import Image
-Image('C:\Users\Mehdi\Desktop\blog\Seaborn-Exercise_files\Seaborn-Exercise_10_1.png')
+Image('C:/Users/Mehdi/Desktop/blog/Seaborn-Exercise_files/Seaborn-Exercise_10_1.png')
 ```
 ```python
 # CODE HERE TO RECREATE THE PLOT SHOWN ABOVE
