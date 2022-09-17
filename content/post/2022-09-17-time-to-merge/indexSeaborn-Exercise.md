@@ -360,6 +360,10 @@ In general do not worry about coloring,styling, or sizing matching up exactly. I
 <img src="task_one.jpg">
 
 ```python
+from IPython.core.display import Image
+Image('C:\Users\Mehdi\Desktop\blog\Seaborn-Exercise_files\Seaborn-Exercise_10_1.png')
+```
+```python
 # CODE HERE TO RECREATE THE PLOT SHOWN ABOVE
 df_just_employed = df.loc[df['DAYS_EMPLOYED'] < 0]
 df_res = df_just_employed.loc[:,['DAYS_EMPLOYED','DAYS_BIRTH']].abs()
@@ -441,10 +445,7 @@ plt.legend(loc=(1.03,0.5), title='FLAG_OWN_REALTY')
 
     <matplotlib.legend.Legend at 0x1b5d33efc10>
 
-```python
-from IPython.core.display import Image
-Image('C:\Users\Mehdi\Desktop\blog\Seaborn-Exercise_files\Seaborn-Exercise_10_1.png')
-```
+
 
 
     
