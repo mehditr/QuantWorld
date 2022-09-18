@@ -381,7 +381,7 @@ sns.scatterplot(x='DAYS_BIRTH',y='DAYS_EMPLOYED', data=df_res)
 
 
 
-![png](./Seaborn-Exercise_10_1.png)
+
     
 
 
@@ -413,7 +413,7 @@ plt.xlabel('Age in Years')
 
 
 
-
+<img src="/img/Seaborn-Exercise_13_1.png" alt="" />
     
 ![png](./Seaborn-Exercise_13_1.png)
     
