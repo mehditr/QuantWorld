@@ -359,10 +359,7 @@ In general do not worry about coloring,styling, or sizing matching up exactly. I
 
 <img src="task_one.jpg">
 
-```python
-from IPython.core.display import Image
-Image('https://www.python.org/static/community_logos/python-logo-master-v3-TM-flattened.png')
-```
+
 ```python
 # CODE HERE TO RECREATE THE PLOT SHOWN ABOVE
 df_just_employed = df.loc[df['DAYS_EMPLOYED'] < 0]
@@ -379,9 +376,8 @@ sns.scatterplot(x='DAYS_BIRTH',y='DAYS_EMPLOYED', data=df_res)
 
 
 
-
+<img src="/img/Seaborn-Exercise_10_1.png" alt="" />
     
-![png](./index_1_0.png)
 
 
 
