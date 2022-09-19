@@ -413,9 +413,9 @@ plt.xlabel('Age in Years')
 
 
 
-<img src="/img/Seaborn-Exercise_13_1.png" alt="" />
+#<img src="/img/Seaborn-Exercise_13_1.png" alt="" />
     
-#![png](./Seaborn-Exercise_13_1.png)
+![png](./Seaborn-Exercise_13_1.png)
     
 
 
