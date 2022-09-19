@@ -15,8 +15,6 @@ image:
   focal_point: ''
   preview_only: no
 projects: []
-image:
-  caption: 'Image credit: [**John Moeses Bauan**](https://unsplash.com/photos/OGZtQF8iC0g)'
 ---
 # Seaborn Exercises
 
