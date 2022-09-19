@@ -11,8 +11,8 @@ authors: []
 lastmod: '2022-09-17T01:07:35+01:00'
 featured: yes
 image:
-  caption: ''
-  focal_point: ''
+  caption: Photo by rawpixel on Unsplash
+  focal_point: Smart
   preview_only: no
 projects: []
 ---
