@@ -21,7 +21,7 @@ projects: []
 This method is popularly known as **Generalized
 ARCH** or **GARCH** model.  
   
-$$\mathrm{e} = \sum_{n=0}^{\infty} \dfrac{1}{n!}$$
+$\mathrm{e} = \sum_{n=0}^{\infty} \dfrac{1}{n!}$
 
 $\\sigma^2_n = \\omega + \\sum\_{i=1}^p \\alpha_i u^2\_{n-i} +
 \\sum\_{i=1}^q \\beta_i \\sigma^2\_{n-i} \$\
