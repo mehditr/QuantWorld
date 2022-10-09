@@ -22,7 +22,7 @@ This method is popularly known as **Generalized
 ARCH** or **GARCH** model.  
   
 
-\$\$ \\sigma^2_n = \\omega + \\sum\_{i=1}^p \\alpha_i u^2\_{n-i} +
+\$\$\\sigma^2_n = \\omega + \\sum\_{i=1}^p \\alpha_i u^2\_{n-i} +
 \\sum\_{i=1}^q \\beta_i \\sigma^2\_{n-i} \$\$
 
 where, \$p\$ and \$q\$ are lag length.
