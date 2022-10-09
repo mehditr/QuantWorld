@@ -21,7 +21,7 @@ projects: []
 This method is popularly known as **Generalized
 ARCH** or **GARCH** model.  
   
-
+```python
 \$\$ \\sigma^2_n = \\omega + \\sum\_{i=1}^p \\alpha_i u^2\_{n-i} +
 \\sum\_{i=1}^q \\beta_i \\sigma^2\_{n-i} \$\$
 
@@ -47,7 +47,7 @@ weighted.
 To model GARCH or the conditional volatility, we need to derive
 \$\\omega\$, \$\\alpha\$, \$\\beta\$ by maximizing the likelihood
 function.
-
+```
 # Required Libraries
 
 
