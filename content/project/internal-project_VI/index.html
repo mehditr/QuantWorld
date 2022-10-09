@@ -1,0 +1,259 @@
+---
+title: Volatility with GARCH
+author: ''
+date: '2022-10-09'
+slug: volatility-with-garch
+categories: []
+tags: []
+subtitle: ''
+summary: ''
+authors: []
+lastmod: '2022-10-09T22:13:37+01:00'
+featured: no
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: no
+projects: []
+---
+
+<script src="{{< blogdown/postref >}}index_files/header-attrs/header-attrs.js"></script>
+
+
+<p>This method is popularly known as <strong>Generalized
+ARCH</strong> or <strong>GARCH</strong> model.</p>
+<p>$$ \sigma^2_n = \omega + \sum_{i=1}^p \alpha_i u^2_{n-i} +
+\sum_{i=1}^q \beta_i \sigma^2_{n-i} $$</p>
+<p>where, $p$ and $q$ are lag length.</p>
+<p><strong>GARCH(1,1)</strong> is then represented as,</p>
+<p>$$ \sigma^2_n = \omega + \alpha u^2_{n-1} + \beta
+\sigma^2_{n-1} $$</p>
+<p>where, $\alpha + \beta &lt; 1$ and $\gamma + \alpha + \beta = 1$
+as weight applied to long term variance cannot be negative.</p>
+<p>where, $\frac {\omega} {(1-\alpha-\beta)}$ is the long-run
+variance.</p>
+<p>The GARCH model is a way of specifying the dependence of the time
+varying nature of volatility. The model incorporates changes in the
+fluctuations in volatility and tracks the persistence of volatility as
+it fluctuates around its long-term average and are exponentially
+weighted.</p>
+<p>To model GARCH or the conditional volatility, we need to derive
+$\omega$, $\alpha$, $\beta$ by maximizing the likelihood
+function.</p>
+<div id="required-libraries" class="section level1">
+<h1>Required Libraries</h1>
+<pre class="python"><code># Data manipulation
+import pandas as pd
+import numpy as np
+import yfinance as yf
+
+from scipy.stats import norm
+from scipy.optimize import minimize
+
+# Import matplotlib for visualization
+import matplotlib
+import matplotlib.pyplot as plt
+
+# Plot settings
+plt.style.use(&#39;dark_background&#39;)
+matplotlib.rcParams[&#39;figure.figsize&#39;] = [12.0, 8.0]
+matplotlib.rcParams[&#39;font.size&#39;] = 10
+matplotlib.rcParams[&#39;lines.linewidth&#39;] = 2.0
+matplotlib.rcParams[&#39;grid.color&#39;] = &#39;black&#39;
+
+import warnings
+warnings.filterwarnings(&#39;ignore&#39;)</code></pre>
+</div>
+<div id="data-sp500" class="section level1">
+<h1>Data: SP500</h1>
+<pre class="python"><code>df=yf.download(&#39;^GSPC&#39;,progress=False)</code></pre>
+<pre class="python"><code>df.to_excel(r&#39;C:\Users\Mehdi\Desktop\Data\SP500.xlsx&#39;)</code></pre>
+<pre class="python"><code># Load locally stored data
+df = pd.read_excel(r&#39;C:\Users\Mehdi\Desktop\Data\SP500.xlsx&#39;, parse_dates=True, index_col=0)[&#39;Adj Close&#39;]
+df = df[&#39;2009&#39;:&#39;2020&#39;]
+
+# Check first and last 5 values 
+
+df</code></pre>
+<pre><code>Date
+2009-01-02     931.799988
+2009-01-05     927.450012
+2009-01-06     934.700012
+2009-01-07     906.650024
+2009-01-08     909.729980
+                 ...     
+2020-12-24    3703.060059
+2020-12-28    3735.360107
+2020-12-29    3727.040039
+2020-12-30    3732.040039
+2020-12-31    3756.070068
+Name: Adj Close, Length: 3021, dtype: float64</code></pre>
+<pre class="python"><code># Visualize FTSE 100 Index Price
+plt.plot(df, color=&#39;orange&#39;)
+plt.title(&#39;SPX Index&#39;);</code></pre>
+<div class="figure">
+<img src="GARCH_files/GARCH_7_0.png" alt="" />
+<p class="caption">png</p>
+</div>
+</div>
+<div id="calculate-log-returns" class="section level1">
+<h1>Calculate Log Returns</h1>
+<pre class="python"><code>#Calculate daily returns
+# returns = df.pct_change().fillna(0)
+returns = np.log(df).diff().fillna(0)
+returns</code></pre>
+<pre><code>Date
+2009-01-02    0.000000
+2009-01-05   -0.004679
+2009-01-06    0.007787
+2009-01-07   -0.030469
+2009-01-08    0.003391
+                ...   
+2020-12-24    0.003530
+2020-12-28    0.008685
+2020-12-29   -0.002230
+2020-12-30    0.001341
+2020-12-31    0.006418
+Name: Adj Close, Length: 3021, dtype: float64</code></pre>
+<pre class="python"><code># Visualize FTSE 100 Index daily returns
+plt.plot(returns, color=&#39;orange&#39;)
+plt.title(&#39;SPX Index Returns&#39;)</code></pre>
+<pre><code>Text(0.5, 1.0, &#39;SPX Index Returns&#39;)</code></pre>
+<div class="figure">
+<img src="GARCH_files/GARCH_10_1.png" alt="" />
+<p class="caption">png</p>
+</div>
+</div>
+<div id="numerical-optimization" class="section level1">
+<h1>Numerical Optimization</h1>
+<p>I will use Numerical optimization to maximize the likelihood estimation</p>
+<pre class="python"><code># GARCH(1,1) function
+def garch(omega, alpha, beta, ret):
+    
+    var = []
+    for i in range(len(ret)):
+        if i==0:
+            var.append(omega/np.abs(1-alpha-beta))
+        else:
+            var.append(omega + alpha * ret[i-1]**2 + beta * var[i-1])
+            
+    return np.array(var)</code></pre>
+<pre class="python"><code>garch(np.var(returns),0.1,0.8,returns)[:3]</code></pre>
+<pre><code>array([0.00136366, 0.00122729, 0.00112039])</code></pre>
+<div id="maximum-likelihood-estimation" class="section level3">
+<h3>Maximum Likelihood Estimation<a href="#Maximum-Likelihood-Estimation" class="anchor-link">¶</a></h3>
+<p>When using MLE, we first assume a
+distribution (ie., a parametric model) and then try to determine the
+model parameters. To estimate GARCH(1,1) parameters, we assume
+distribution of returns conditional on variance are normally
+distributed.</p>
+<p>We maximize,</p>
+<p>$$\sum_{i=1}^n log \Big<span class="math display">\[\\frac{1}{\\sqrt{2 \\pi \\sigma_i^2}}
+e^{-\\frac{(u_i - \\bar{u})^2}{2 \\sigma_i^2}} \\Big\]</span>$$</p>
+<p>to derive $\omega$, $\alpha$ and $\beta$.</p>
+<pre class="python"><code># Log likelihood function
+def MLE(params, ret):
+    
+    omega= params[0]; alpha = params[1]; beta = params[2]
+    
+    variance = garch(omega, alpha, beta, ret) # GARCH(1,1) function
+
+    llh = []
+    for i in range(len(ret)):
+        llh.append(np.log(norm.pdf(ret[i], 0, np.sqrt(variance[i]))))
+    
+    return -np.sum(np.array(llh))</code></pre>
+<pre class="python"><code>MLE((np.var(returns), 0.1, 0.8), returns)</code></pre>
+<pre><code>-7881.868784195199</code></pre>
+</div>
+</div>
+<div id="optimization" class="section level1">
+<h1>Optimization</h1>
+<p>To optimize the GARCH parameters, we will use the minimize function from scipy optimization module. The objective function here is a function returning maximum log likelihood and the target variables are GARCH parameters.</p>
+<p>Further, we use the Nelder–Mead method also known as downhill simplex method which is a commonly applied to numerical method to find the minimum or maximum of an objective function in a multidimensional space.</p>
+<pre class="python"><code># Specify optimization input
+param = [&#39;omega&#39;, &#39;alpha&#39;, &#39;beta&#39;]
+initial_values = ((np.var(returns), 0.1, 0.8))</code></pre>
+<pre class="python"><code>res = minimize(MLE, initial_values, args = returns,  method=&#39;Nelder-Mead&#39;, options={&#39;disp&#39;:False})
+res</code></pre>
+<pre><code> final_simplex: (array([[3.02398346e-06, 1.66716946e-01, 8.15417329e-01],
+       [3.02271806e-06, 1.66787920e-01, 8.15398228e-01],
+       [3.02377952e-06, 1.66744261e-01, 8.15432017e-01],
+       [3.02149237e-06, 1.66710993e-01, 8.15469573e-01]]), array([-9960.80806965, -9960.80806879, -9960.8080682 , -9960.80806387]))
+           fun: -9960.808069647774
+       message: &#39;Optimization terminated successfully.&#39;
+          nfev: 244
+           nit: 136
+        status: 0
+       success: True
+             x: array([3.02398346e-06, 1.66716946e-01, 8.15417329e-01])</code></pre>
+<pre class="python"><code># GARCH parameters
+dict(zip(param,np.around(res[&#39;x&#39;]*100,4)))</code></pre>
+<pre><code>{&#39;omega&#39;: 0.0003, &#39;alpha&#39;: 16.6717, &#39;beta&#39;: 81.5417}</code></pre>
+<pre class="python"><code># Parameters
+omega = res[&#39;x&#39;][0]; alpha = res[&#39;x&#39;][1]; beta = res[&#39;x&#39;][2]
+
+# Variance
+var = garch(res[&#39;x&#39;][0],res[&#39;x&#39;][1],res[&#39;x&#39;][2],returns)
+
+# Annualised conditional volatility
+ann_vol = np.sqrt(var*252) * 100
+ann_vol</code></pre>
+<pre><code>array([20.6528341 , 18.85280309, 17.51118855, ..., 10.54680756,
+       10.02060387,  9.50019167])</code></pre>
+<pre class="python"><code># Visualise GARCH volatility and VIX
+plt.title(&#39;Annualized Volatility&#39;)
+plt.plot(returns.index, ann_vol, color=&#39;orange&#39;, label=&#39;GARCH&#39;)
+plt.legend(loc=2);</code></pre>
+<div class="figure">
+<img src="GARCH_files/GARCH_24_0.png" alt="" />
+<p class="caption">png</p>
+</div>
+</div>
+<div id="n-day-forecast" class="section level1">
+<h1>N-day Forecast</h1>
+<p>Extending the GARCH(1,1) model to forecast future volatility, we can
+derive the n-days ahead forecast using the following equation.</p>
+<p>$$ E<span class="math display">\[\\sigma^2\_{n+k}\]</span> = \overline{\sigma}\space{^2} +
+(\alpha+\beta)^k * (\sigma^2_n - \overline{\sigma}\space{^2})
+$$</p>
+<p>where, $\overline{\sigma}\space{^2}$ is the long run variance and
+$\alpha$ and $\beta$ are GARCH parameters.</p>
+<p>We know that volatility has the tendency to revert to its long run
+range. And, $\alpha + \beta &lt; 1$ in GARCH(1,1) and hence when k
+gets larger, the second term gets smaller and the forecast tends towards
+the long term variance.</p>
+<pre class="python"><code># long run variance
+np.sqrt(252*omega/(1-alpha-beta))*100</code></pre>
+<pre><code>20.652834103193655</code></pre>
+<pre class="python"><code># Calculate N-day forecast
+longrun_variance = omega/(1-alpha-beta)
+ 
+fvar = []
+for i in range(1,732):    
+    fvar.append(longrun_variance + (alpha+beta)**i * (var[-1] - longrun_variance))
+
+var = np.array(fvar)</code></pre>
+<pre class="python"><code># Verify first 10 values
+var[:10]</code></pre>
+<pre><code>array([3.81990609e-05, 4.05405904e-05, 4.28402868e-05, 4.50988975e-05,
+       4.73171565e-05, 4.94957847e-05, 5.16354900e-05, 5.37369681e-05,
+       5.58009016e-05, 5.78279615e-05])</code></pre>
+<pre class="python"><code># Plot volatility forecast over different time horizon
+plt.axhline(y=np.sqrt(longrun_variance*252)*100, color=&#39;yellow&#39;)
+plt.plot(np.sqrt(var[:300]*252)*100, color=&#39;red&#39;)
+
+plt.xlabel(&#39;Horizon (in days)&#39;)
+plt.ylabel(&#39;Volatility (%)&#39;)
+
+plt.annotate(&#39;GARCH Forecast&#39;, xy=(200,19), color=&#39;red&#39;)
+plt.annotate(&#39;Longrun Volatility =&#39; + str(np.around(np.sqrt(longrun_variance*252)*100,2)) + &#39;%&#39;, 
+             xy=(200,19.50), color=&#39;yellow&#39;)
+
+plt.title(&#39;Volatility Forecast : N-days Ahead&#39;)
+plt.grid(axis=&#39;x&#39;)</code></pre>
+<div class="figure">
+<img src="GARCH_files/GARCH_30_0.png" alt="" />
+<p class="caption">png</p>
+</div>
+</div>
