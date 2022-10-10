@@ -28,6 +28,8 @@ f(x)&=a + bx
 
 where the parameters are as follows:
 
+---
+
 * $a=r_{f}$
 
 * $b=\frac{R_{T}-r_{f}}{\sigma_{T}}=f^{\prime}(x) \hspace{5mm} \text{Slope of the capital market line = slope of the tangent line of the efficient frontier}$
