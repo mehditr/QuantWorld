@@ -22,21 +22,6 @@ projects: []
 
 <p>This method is popularly known as <strong>Generalized
 ARCH</strong> or <strong>GARCH</strong> model.</p>
-<p><span class="math display">\[\begin{align*}
-f(x)&amp;=a + bx
-\end{align*}\]</span></p>
-<p>where the parameters are as follows:</p>
-<ul>
-<li><p><span class="math inline">\(a=r_{f}\)</span></p></li>
-<li><p><span class="math inline">\(b=\frac{R_{T}-r_{f}}{\sigma_{T}}=f^{\prime}(x) \hspace{5mm} \text{Slope of the capital market line = slope of the tangent line of the efficient frontier}\)</span></p></li>
-<li><p><span class="math inline">\(x=\sigma_{p}\)</span></p></li>
-</ul>
-<p>There are three unknown parameters and therefore we must have three equations to solve for the values of these parameters:</p>
-<p><span class="math display">\[\begin{align*}
-a=r_{f} \hspace{5mm} \Longrightarrow \hspace{5mm} 0&amp;=r_{f}-a \\
-b=f^{\prime}(x) \hspace{5mm} \Longrightarrow \hspace{5mm} 0&amp;=b-f^{\prime}(x) \\
-f(x)=a + bx \hspace{5mm} \Longrightarrow \hspace{5mm} 0&amp;=a+b\cdot x-f(x)
-\end{align*}\]</span></p>
 <p>$$ \sigma^2_n = \omega + \sum_{i=1}^p \alpha_i u^2_{n-i} +
 \sum_{i=1}^q \beta_i \sigma^2_{n-i} $$</p>
 <p>where, $p$ and $q$ are lag length.</p>
