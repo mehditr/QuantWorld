@@ -18,7 +18,7 @@ projects: []
 ---
 
 
-## GARCH<a href="#GARCH" class="anchor-link">¶</a>
+
 
 This method is popularly known as **Generalized
 ARCH** or **GARCH** model.  
