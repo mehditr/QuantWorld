@@ -18,403 +18,392 @@ projects: []
 ---
 
 
-This method is popularly known as **Generalized
-ARCH** or **GARCH** model.  
-  
+## Libraries and Modules
 
+We need the following Python libraries and modules:
 
-\$\$ \\sigma^2_n = \\omega + \\sum\_{i=1}^p \\alpha_i u^2\_{n-i} +
-\\sum\_{i=1}^q \\beta_i \\sigma^2\_{n-i} \$\$
-
-where, \$p\$ and \$q\$ are lag length.
-
-**GARCH(1,1)** is then represented as,
-
-\$\$ \\sigma^2_n = \\omega + \\alpha u^2\_{n-1} + \\beta
-\\sigma^2\_{n-1} \$\$
-
-where, \$\\alpha + \\beta \< 1\$ and \$\\gamma + \\alpha + \\beta = 1\$
-as weight applied to long term variance cannot be negative.
-
-where, \$\\frac {\\omega} {(1-\\alpha-\\beta)}\$ is the long-run
-variance.
-
-The GARCH model is a way of specifying the dependence of the time
-varying nature of volatility. The model incorporates changes in the
-fluctuations in volatility and tracks the persistence of volatility as
-it fluctuates around its long-term average and are exponentially
-weighted.
-
-To model GARCH or the conditional volatility, we need to derive
-\$\\omega\$, \$\\alpha\$, \$\\beta\$ by maximizing the likelihood
-function.
-
-# Required Libraries
-
-
-```python
-# Data manipulation
-import pandas as pd
+```{python}
 import numpy as np
-import yfinance as yf
-
-from scipy.stats import norm
-from scipy.optimize import minimize
-
-# Import matplotlib for visualization
-import matplotlib
-import matplotlib.pyplot as plt
-
-# Plot settings
-plt.style.use('dark_background')
-matplotlib.rcParams['figure.figsize'] = [12.0, 8.0]
-matplotlib.rcParams['font.size'] = 10
-matplotlib.rcParams['lines.linewidth'] = 2.0
-matplotlib.rcParams['grid.color'] = 'black'
-
-import warnings
-warnings.filterwarnings('ignore')
+import pandas as pd
+from pandas_datareader import data as web
+import scipy.optimize as sco
+import scipy.interpolate as sci
 ```
 
-# Data: SP500 
+---
 
+## Data
 
-```python
-df=yf.download('^GSPC',progress=False)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; For our sample, we select 12 different assets for the analysis with exposure to all of the GICS sectors—-- energy, materials, industrials, utilities, healthcare, financials, consumer discretionary, consumer staples, information technology, communication services, and real estate. The start date is 2011-09-13 and the end date is by default today's date, which is `r Sys.Date()`.
+
+```{python}
+# Create a list of symbols
+symbols = [
+  "XOM", "SHW", "JPM", "AEP", "UNH", "AMZN", 
+  "KO", "BA", "AMT", "DD", "TSN", "SLG"
+]
+# Instantiate data frame container
+asset_data = pd.DataFrame()
+# For loop to get data from Yahoo finance
+for sym in symbols:
+  # Each run of the loop returns a pandas data frame
+  asset_data[sym] = web.DataReader(
+    name = sym, 
+    data_source = 'yahoo',
+    start = '2011-09-13'
+    # Use [ to extract values as pandas series
+    )['Adj Close']
+# Set column indices
+asset_data.columns = symbols
+# Examine the first 5 rows
+asset_data.head(n = 5)
 ```
 
+Next, we find the simple daily returns for each of the 12 assets using the `pct_change()` method, since our data object is a Pandas `DataFrame`. We use simple returns since they have the property of being asset-additive, which is necessary since we need to compute portfolios returns:
 
-```python
-df.to_excel(r'C:\Users\Mehdi\Desktop\Data\SP500.xlsx')
+```{python}
+# Compute daily simple returns
+daily_returns = (
+  asset_data.pct_change()
+            .dropna(
+              # Drop the first row since we have NaN's
+              # The first date 2011-09-13 does not have a value since it is our cut-off date
+              axis = 0,
+              how = 'any',
+              inplace = False
+              )
+)
+# Examine the last 5 rows
+daily_returns.tail(n = 5)
 ```
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The simple daily returns may be visualized using line charts, density plots, and histograms, which are covered in my other [post on visualizing asset data](https://www.kenwuyang.com/en/post/visualizing-asset-returns/). Even though the visualizations in that post use the `ggplot2` package in R, the `plotnine` package, or any other Python graphics librarires, can be employed to produce them in Python. For now, let us annualize the daily returns over the 10-year period from 2011-9-13 to `r Sys.Date()`. We assume the number of trading days in a year is computed as follows:
 
-```python
-# Load locally stored data
-df = pd.read_excel(r'C:\Users\Mehdi\Desktop\Data\SP500.xlsx', parse_dates=True, index_col=0)['Adj Close']
-df = df['2009':'2020']
+\begin{align*}
+365.25 \text{(days on average per year)} \times \frac{5}{7} \text{(proportion work days per week)} \\
+- 6 \text{(weekday holidays)} - 3\times\frac{5}{7} \text{(fixed date holidays)} = 252.75 \approx 253
+\end{align*}
 
-# Check first and last 5 values 
-
-df
+```{python}
+daily_returns.mean() * 253
 ```
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; As can be seen, there are significant differences in the annualized performances between these assets. Amazon dominated the period with an annualized rate of return of $32.2\%$. Exxon Mobil Corporation, on the other hand, is at the bottom of the rankings, recording an annualized rate of return of only $4.2\%$ over the period. The annualized variance-covariance matrix of the returns can be computed using built-in `pandas` method `cov`:
 
-
-
-    Date
-    2009-01-02     931.799988
-    2009-01-05     927.450012
-    2009-01-06     934.700012
-    2009-01-07     906.650024
-    2009-01-08     909.729980
-                     ...     
-    2020-12-24    3703.060059
-    2020-12-28    3735.360107
-    2020-12-29    3727.040039
-    2020-12-30    3732.040039
-    2020-12-31    3756.070068
-    Name: Adj Close, Length: 3021, dtype: float64
-
-
-
-
-```python
-# Visualize FTSE 100 Index Price
-plt.plot(df, color='orange')
-plt.title('SPX Index');
+```{python}
+daily_returns.cov() * 253
 ```
 
+The variance-covariance matrix of the returns will be needed to compute the variance of the portfolio returns.
 
-    
-![png](GARCH_files/GARCH_7_0.png)
-    
+---
 
+## The Optimization Problem
 
-# Calculate Log Returns
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The portfolio optimization problem, therefore, given a universe of assets and their characteristics, deals with a method to spread the capital between them in a way that *maximizes the return of the portfolio per unit of risk taken*. There is no unique solution for this problem, but a set of solutions, which together define what is called an **efficient frontier**--- the portfolios whose returns cannot be improved without increasing risk, or the portfolios where risk cannot be reduced without reducing returns as well. The Markowitz model for the solution of the portfolio optimization problem has a twin objective of maximizing return and minimizing risk, built on the Mean-Variance framework of asset returns and holding the basic constraints, which reduces to the following:
 
+**Minimize Risk given Levels of Return**
 
-```python
-#Calculate daily returns
-# returns = df.pct_change().fillna(0)
-returns = np.log(df).diff().fillna(0)
-returns
+\begin{align*}
+\min_{\vec{w}} \hspace{5mm} \sqrt{\vec{w}^{T} \hat{\Sigma} \vec{w}}
+\end{align*}
+
+subject to 
+
+\begin{align*}
+&\vec{w}^{T} \hat{\mu}=\bar{r}_{P} \\
+&\vec{w}^{T} \vec{1} = 1 \hspace{5mm} (\text{Full investment}) \\
+&\vec{0} \le \vec{w} \le \vec{1} \hspace{5mm} (\text{Long only})
+\end{align*}
+
+**Maximize Return given Levels of Risk**
+
+\begin{align*}
+\max _{\vec{w}} \hspace{5mm} \vec{w}^{T} \hat{\mu}
+\end{align*}
+
+subject to
+
+\begin{align*}
+&\vec{w}^{T} \hat{\Sigma} \vec{w}=\bar{\sigma}_{P} \\
+&\vec{w}^{T} \vec{1} = 1 \hspace{5mm} (\text{Full investment}) \\
+&\vec{0} \le \vec{w} \le \vec{1} \hspace{5mm} (\text{Long only})
+\end{align*}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; In absence of other constraints, the above model is loosely referred to as the "unconstrained" portfolio optimization model. Solving the mathematical model yields a set of optimal weights representing a set of optimal portfolios. The solution set to these two problems is a hyperbola that depicts the efficient frontier in the $\mu-\sigma$ -diagram.
+
+---
+
+## Monte Carlo Simulation
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The first task is to simulate a random set of portfolios to visualize the risk-return profiles of our given set of assets. To carry out the Monte Carlo simulation, we define two functions that both take as inputs a vector of asset weights and output the expected portfolio return and standard deviation:
+
+**Returns**
+
+```{python}
+# Function for computing portfolio return
+def portfolio_returns(weights):
+    return (np.sum(daily_returns.mean() * weights)) * 253
 ```
 
+**Standard Deviation**
 
-
-
-    Date
-    2009-01-02    0.000000
-    2009-01-05   -0.004679
-    2009-01-06    0.007787
-    2009-01-07   -0.030469
-    2009-01-08    0.003391
-                    ...   
-    2020-12-24    0.003530
-    2020-12-28    0.008685
-    2020-12-29   -0.002230
-    2020-12-30    0.001341
-    2020-12-31    0.006418
-    Name: Adj Close, Length: 3021, dtype: float64
-
-
-
-
-```python
-# Visualize FTSE 100 Index daily returns
-plt.plot(returns, color='orange')
-plt.title('SPX Index Returns')
+```{python}
+# Function for computing standard deviation of portfolio returns
+def portfolio_sd(weights):
+    return np.sqrt(np.transpose(weights) @ (daily_returns.cov() * 253) @ weights)
 ```
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Next, we use a for loop to simulate random vectors of asset weights, computing the expected portfolio return and standard deviation for each permutation of random weights. Again, we ensure that each random weight vector is subject to the long-positions-only and full-investment constraints.
 
+**Monte Carlo Simulation**
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The empty containers we instantiate are lists; they are *mutable* and so growing them will not be memory inefficient. 
 
-    Text(0.5, 1.0, 'SPX Index Returns')
-
-
-
-
-    
-![png](GARCH_files/GARCH_10_1.png)
-    
-
-
-# Numerical Optimization
-
-I will use Numerical optimization to maximize the likelihood estimation
-
-
-```python
-# GARCH(1,1) function
-def garch(omega, alpha, beta, ret):
-    
-    var = []
-    for i in range(len(ret)):
-        if i==0:
-            var.append(omega/np.abs(1-alpha-beta))
-        else:
-            var.append(omega + alpha * ret[i-1]**2 + beta * var[i-1])
-            
-    return np.array(var)
+```{python}
+# instantiate empty list containers for returns and sd
+list_portfolio_returns = []
+list_portfolio_sd = []
+# For loop to simulate 5000 random weight vectors (numpy array objects)
+for p in range(5000):
+  # Return random floats in the half-open interval [0.0, 1.0)
+  weights = np.random.random(size = len(symbols)) 
+  # Normalize to unity
+  # The /= operator divides the array by the sum of the array and rebinds "weights" to the new object
+  weights /= np.sum(weights) 
+  # Lists are mutable so growing will not be memory inefficient
+  list_portfolio_returns.append(portfolio_returns(weights))
+  list_portfolio_sd.append(portfolio_sd(weights))
+  # Convert list to numpy arrays
+  port_returns = np.array(object = list_portfolio_returns)
+  port_sd = np.array(object = list_portfolio_sd)
 ```
 
+Let us examine the simulation results. In particular, the highest and the lowest expected portfolio returns are as follows:
 
-```python
-garch(np.var(returns),0.1,0.8,returns)[:3]
+```{python}
+# Max expected return
+round(max(port_returns), 4)
+# Min expected return
+round(min(port_returns), 4)
 ```
 
+On the other hand, the highest and lowest volatility measures are recorded as:
 
-
-
-    array([0.00136366, 0.00122729, 0.00112039])
-
-
-
-### Maximum Likelihood Estimation<a href="#Maximum-Likelihood-Estimation" class="anchor-link">¶</a>
-
-When using MLE, we first assume a
-distribution (ie., a parametric model) and then try to determine the
-model parameters. To estimate GARCH(1,1) parameters, we assume
-distribution of returns conditional on variance are normally
-distributed.
-
-We maximize,
-
-\$\$\\sum\_{i=1}^n log \\Big\[\\frac{1}{\\sqrt{2 \\pi \\sigma_i^2}}
-e^{-\\frac{(u_i - \\bar{u})^2}{2 \\sigma_i^2}} \\Big\]\$\$
-
-to derive \$\\omega\$, \$\\alpha\$ and \$\\beta\$.
-
-
-```python
-# Log likelihood function
-def MLE(params, ret):
-    
-    omega= params[0]; alpha = params[1]; beta = params[2]
-    
-    variance = garch(omega, alpha, beta, ret) # GARCH(1,1) function
-
-    llh = []
-    for i in range(len(ret)):
-        llh.append(np.log(norm.pdf(ret[i], 0, np.sqrt(variance[i]))))
-    
-    return -np.sum(np.array(llh))
+```{python}
+# Max sd
+round(max(port_sd), 4)
+# Min sd
+round(min(port_sd), 4)
 ```
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; We may also visualize the expected returns and standard deviations on a $\mu-\sigma$ *trade-off* diagram. For this task, I will leverage R's graphics engine and the `plotly` graphics library. The `reticulate` package in R allows for relatively seamless transition between Python and R. Fortunately, the NumPy arrays created in Python can be accessed as R vector objects; this makes plotting in R using Python objects simple:
 
-```python
-MLE((np.var(returns), 0.1, 0.8), returns)
+```{r}
+# Plot the sub-optimal portfolios
+plotly::plot_ly(
+  x = py$port_sd, y = py$port_returns, color = (py$port_returns / py$port_sd),
+  mode = "markers", type = "scattergl", showlegend = FALSE,
+  marker = list(size = 5, opacity = 0.7)
+) %>%
+  plotly::layout(
+    title = "Mean-Standard Deviation Diagram",
+    yaxis = list(title = "Expected Portfolio Return (Annualized)", tickformat = ".2%"),
+    xaxis = list(title = "Portoflio Standard Deviation (Annualized)", tickformat = ".2%")
+  ) %>% 
+  plotly::colorbar(title = "Sharpe Ratio")
 ```
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Each point in the diagram above represents a permutation of expected-return-standard-deviation value pair. The points are color coded such that the magnitudes of the Sharpe ratios, defined as $SR ≡ \frac{\mu_{P} – r_{f}}{\sigma_{P}}$, can be readily observed for each expected-return-standard-deviation pairing. For simplicity, we assume that $r_{f} ≡ 0$. It could be argued that the assumption here is restrictive, so I explored using a different risk-free rate in my previous [post](https://www.kenwuyang.com/en/post/portfolio-optimization-dashboard/). 
 
+---
 
+## The Optimal Portfolios
 
-    -7881.868784195199
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Solving the optimization problem defined earlier provides us with a *set of optimal portfolios* given the characteristics of our assets. There are two important portfolios that we may be interested in constructing--- the **minimum variance portfolio** and the **maximal Sharpe ratio portfolio**. In the case of the maximal Sharpe ratio portfolio, the objective function we wish to maximize is our user-defined Sharpe ratio function. The constraint is that all weights sum up to 1. We also specify that the weights are bound between 0 and 1. In order to use the minimization function from the `SciPy` library, we need to transform the maximization problem into one of minimization. In other words, the negative value of the Sharpe ratio is minimized to find the maximum value; the optimal portfolio composition is therefore the array of weights that yields that maximum value of the Sharpe ratio.
 
-
-
-# Optimization
-
-To optimize the GARCH parameters, we will use the minimize function from scipy optimization module. The objective function here is a function returning maximum log likelihood and the target variables are GARCH parameters.
-
-Further, we use the Nelder–Mead method also known as downhill simplex method which is a commonly applied to numerical method to find the minimum or maximum of an objective function in a multidimensional space.
-
-
-```python
-# Specify optimization input
-param = ['omega', 'alpha', 'beta']
-initial_values = ((np.var(returns), 0.1, 0.8))
+```{python}
+# User defined Sharpe ratio function
+# Negative sign to compute the negative value of Sharpe ratio
+def sharpe_fun(weights):
+  return - (portfolio_returns(weights) / portfolio_sd(weights))
 ```
 
+We will use dictionaries inside of a tuple to represent the constraints:
 
-```python
-res = minimize(MLE, initial_values, args = returns,  method='Nelder-Mead', options={'disp':False})
-res
+```{python}
+# We use an anonymous lambda function
+constraints = ({'type': 'eq', 'fun': lambda x: np.sum(x) - 1})
 ```
 
+Next, the bound values for the weights:
 
-
-
-     final_simplex: (array([[3.02398346e-06, 1.66716946e-01, 8.15417329e-01],
-           [3.02271806e-06, 1.66787920e-01, 8.15398228e-01],
-           [3.02377952e-06, 1.66744261e-01, 8.15432017e-01],
-           [3.02149237e-06, 1.66710993e-01, 8.15469573e-01]]), array([-9960.80806965, -9960.80806879, -9960.8080682 , -9960.80806387]))
-               fun: -9960.808069647774
-           message: 'Optimization terminated successfully.'
-              nfev: 244
-               nit: 136
-            status: 0
-           success: True
-                 x: array([3.02398346e-06, 1.66716946e-01, 8.15417329e-01])
-
-
-
-
-```python
-# GARCH parameters
-dict(zip(param,np.around(res['x']*100,4)))
+```{python}
+# This creates 12 tuples of (0, 1), all of which exist within a container tuple
+# We essentially create a sequence of (min, max) pairs
+bounds = tuple(
+  (0, 1) for w in weights
+)
 ```
 
+We also need to supply a starting list of weights, which essentially functions as an initial guess. For our purposes, this will be an equal weight array:
 
-
-
-    {'omega': 0.0003, 'alpha': 16.6717, 'beta': 81.5417}
-
-
-
-
-```python
-# Parameters
-omega = res['x'][0]; alpha = res['x'][1]; beta = res['x'][2]
-
-# Variance
-var = garch(res['x'][0],res['x'][1],res['x'][2],returns)
-
-# Annualised conditional volatility
-ann_vol = np.sqrt(var*252) * 100
-ann_vol
+```{python}
+# Repeat the list with the value (1 / 12) 12 times, and convert list to array
+equal_weights = np.array(
+  [1 / len(symbols)] * len(symbols)
+)
 ```
 
+We will use the `scipy.optimize.minimize` function and the Sequential Least Squares Programming (SLSQP) method for the minimization:
 
-
-
-    array([20.6528341 , 18.85280309, 17.51118855, ..., 10.54680756,
-           10.02060387,  9.50019167])
-
-
-
-
-```python
-# Visualise GARCH volatility and VIX
-plt.title('Annualized Volatility')
-plt.plot(returns.index, ann_vol, color='orange', label='GARCH')
-plt.legend(loc=2);
+```{python}
+# Minimization results
+max_sharpe_results = sco.minimize(
+  # Objective function
+  fun = sharpe_fun, 
+  # Initial guess, which is the equal weight array
+  x0 = equal_weights, 
+  method = 'SLSQP',
+  bounds = bounds, 
+  constraints = constraints
+)
 ```
 
+The class of the optimization results is `scipy.optimize.optimize.OptimizeResult`, which contains many objects. The object of interest to us is the weight composition array, which we employ to construct the maximal Sharpe ratio portfolio:
 
-    
-![png](GARCH_files/GARCH_24_0.png)
-    
-
-
-# N-day Forecast
-
-Extending the GARCH(1,1) model to forecast future volatility, we can
-derive the n-days ahead forecast using the following equation.
-
-\$\$ E\[\\sigma^2\_{n+k}\] = \\overline{\\sigma}\\space{^2} +
-(\\alpha+\\beta)^k \* (\\sigma^2_n - \\overline{\\sigma}\\space{^2})
-\$\$
-
-where, \$\\overline{\\sigma}\\space{^2}\$ is the long run variance and
-\$\\alpha\$ and \$\\beta\$ are GARCH parameters.
-
-We know that volatility has the tendency to revert to its long run
-range. And, \$\\alpha + \\beta \< 1\$ in GARCH(1,1) and hence when k
-gets larger, the second term gets smaller and the forecast tends towards
-the long term variance.
-
-
-
-```python
-# long run variance
-np.sqrt(252*omega/(1-alpha-beta))*100
+```{python}
+# Extract the weight composition array
+max_sharpe_results["x"]
 ```
 
+### Maximal Sharpe Ratio Portfolio
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Therefore, the expected return, standard deviation, and Sharpe ratio of this portfolio are as follows:
 
+* **Expected return (Maximal Sharpe ratio portfolio)**
 
-    20.652834103193655
-
-
-
-
-```python
-# Calculate N-day forecast
-longrun_variance = omega/(1-alpha-beta)
- 
-fvar = []
-for i in range(1,732):    
-    fvar.append(longrun_variance + (alpha+beta)**i * (var[-1] - longrun_variance))
-
-var = np.array(fvar)
+```{python}
+# Expected return
+max_sharpe_port_return = portfolio_returns(max_sharpe_results["x"])
+round(max_sharpe_port_return, 4)
 ```
 
+* **Standard deviation (Maximal Sharpe ratio portfolio)**
 
-```python
-# Verify first 10 values
-var[:10]
+```{python}
+# Standard deviation
+max_sharpe_port_sd = portfolio_sd(max_sharpe_results["x"])
+round(max_sharpe_port_sd, 4)
 ```
 
+* **Sharpe ratio (Maximal Sharpe ratio portfolio)**
 
-
-
-    array([3.81990609e-05, 4.05405904e-05, 4.28402868e-05, 4.50988975e-05,
-           4.73171565e-05, 4.94957847e-05, 5.16354900e-05, 5.37369681e-05,
-           5.58009016e-05, 5.78279615e-05])
-
-
-
-
-```python
-# Plot volatility forecast over different time horizon
-plt.axhline(y=np.sqrt(longrun_variance*252)*100, color='yellow')
-plt.plot(np.sqrt(var[:300]*252)*100, color='red')
-
-plt.xlabel('Horizon (in days)')
-plt.ylabel('Volatility (%)')
-
-plt.annotate('GARCH Forecast', xy=(200,19), color='red')
-plt.annotate('Longrun Volatility =' + str(np.around(np.sqrt(longrun_variance*252)*100,2)) + '%', 
-             xy=(200,19.50), color='yellow')
-
-plt.title('Volatility Forecast : N-days Ahead')
-plt.grid(axis='x')
+```{python}
+# Sharpe ratio
+max_sharpe_port_sharpe = max_sharpe_port_return / max_sharpe_port_sd
+round(max_sharpe_port_sharpe, 4)
 ```
 
+---
 
-    
-![png](GARCH_files/GARCH_30_0.png)
-    
+### Minimum Variance Portfolio
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The minimum variance portfolio may be constructed similarly. The objective function, in this case, is the standard deviation function:
+
+```{python}
+# Minimize sd
+min_sd_results = sco.minimize(
+  # Objective function
+  fun = portfolio_sd, 
+  # Initial guess, which is the equal weight array
+  x0 = equal_weights, 
+  method = 'SLSQP',
+  bounds = bounds, 
+  constraints = constraints
+)
+```
+
+* **Expected return (Minimum variance portfolio)**
+
+```{python}
+# Expected return
+min_sd_port_return = portfolio_returns(min_sd_results["x"])
+round(min_sd_port_return, 4)
+```
+
+* **Standard deviation (Minimum variance portfolio)**
+
+```{python}
+# Standard deviation
+min_sd_port_sd = portfolio_sd(min_sd_results["x"])
+round(min_sd_port_sd, 4)
+```
+
+* **Sharpe ratio (Minimum variance portfolio)**
+
+```{python}
+# Sharpe ratio
+min_sd_port_sharpe = min_sd_port_return / min_sd_port_sd
+round(min_sd_port_sharpe, 4)
+```
+
+---
+
+## Efficient Frontier
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; As an investor, one is generally interested in the maximum return given a fixed risk level or the minimum risk given a fixed return expectation. As mentioned in the earlier section, the set of optimal portfolios--- whose expected portfolio returns for a defined level of risk cannot be surpassed by any other portfolio--- depicts the so-called efficient frontier. The Python implementation is to fix a target return level and, for each such level, minimize the volatility value. For the optimization, we essentially "fit" the twin-objective described earlier into an optimization problem that can be solved using quadratic programming. (The objective function is the portfolio standard deviation formula, which is a quadratic function) Therefore, the two linear constraints are the target return (a linear function) and that the weights must sum to 1 (another linear function). We will again use dictionaries inside of a tuple to represent the constraints:
+
+```{python}
+# We use anonymous lambda functions
+# The argument x will be the weights
+constraints = (
+  {'type': 'eq', 'fun': lambda x: portfolio_returns(x) - target}, 
+  {'type': 'eq', 'fun': lambda x: np.sum(x) - 1}
+)
+```
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The full-investment and long-positions-only specifications will remain unchanged throughout the optimization process, but the value for `target` will be different during each iteration. Since dictionaries are *mutable*, the first constraint will be updated repeatedly during the minimization process. However, because tuples are *immutable*, the references held by the `constraints` tuple will always point to the same objects. This nuance makes the implementation Pythonic. We again constrain the weights such that all weights fall within the interval $[0,1]$:
+
+```{python}
+# This creates 12 tuples of (0, 1), all of which exist within a container tuple
+# We essentially create a sequence of (min, max) pairs
+bounds = tuple(
+  (0, 1) for w in weights
+)
+```
+
+Here's the implementation in Python. We will use the `scipy.optimize.minimize` function again and the Sequential Least Squares Programming (SLSQP) method for the minimization:
+
+```{python}
+# Initialize an array of target returns
+target = np.linspace(
+  start = 0.15, 
+  stop = 0.30,
+  num = 100
+)
+# instantiate empty container for the objective values to be minimized
+obj_sd = []
+# For loop to minimize objective function
+for target in target:
+  min_result_object = sco.minimize(
+    # Objective function
+    fun = portfolio_sd, 
+    # Initial guess, which is the equal weight array
+    x0 = equal_weights, 
+    method = 'SLSQP',
+    bounds = bounds, 
+    constraints = constraints
+    )
+  # Extract the objective value and append it to the output container
+  obj_sd.append(min_result_object['fun'])
+# End of for loop
+# Convert list to array
+obj_sd = np.array(obj_sd)
+# Rebind target to a new array object
+target = np.linspace(
+  start = 0.15, 
+  stop = 0.30,
+  num = 100
+)
+```
