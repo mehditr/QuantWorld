@@ -18,32 +18,11 @@ projects: []
 ---
 
 
+## GARCH<a href="#GARCH" class="anchor-link">¶</a>
 
 This method is popularly known as **Generalized
 ARCH** or **GARCH** model.  
-
-\begin{align*}
-f(x)&=a + bx
-\end{align*}
-
-where the parameters are as follows:
-
----
-
-* $a=r_{f}$
-
-* $b=\frac{R_{T}-r_{f}}{\sigma_{T}}=f^{\prime}(x) \hspace{5mm} \text{Slope of the capital market line = slope of the tangent line of the efficient frontier}$
-
-* $x=\sigma_{p}$
-
-There are three unknown parameters and therefore we must have three equations to solve for the values of these parameters:
-
-\begin{align*}
-a=r_{f} \hspace{5mm} \Longrightarrow \hspace{5mm} 0&=r_{f}-a \\
-b=f^{\prime}(x) \hspace{5mm} \Longrightarrow \hspace{5mm} 0&=b-f^{\prime}(x) \\
-f(x)=a + bx \hspace{5mm} \Longrightarrow \hspace{5mm} 0&=a+b\cdot x-f(x)
-\end{align*}
-
+  
 
 \$\$ \\sigma^2_n = \\omega + \\sum\_{i=1}^p \\alpha_i u^2\_{n-i} +
 \\sum\_{i=1}^q \\beta_i \\sigma^2\_{n-i} \$\$
