@@ -22,6 +22,39 @@ projects: []
 
 <p>This method is popularly known as <strong>Generalized
 ARCH</strong> or <strong>GARCH</strong> model.</p>
+<p><span class="math display">\[\begin{align*}
+f(x)&amp;=a + bx
+\end{align*}\]</span></p>
+<p>where the parameters are as follows:</p>
+<ul>
+<li><p><span class="math inline">\(a=r_{f}\)</span></p></li>
+<li><p><span class="math inline">\(b=\frac{R_{T}-r_{f}}{\sigma_{T}}=f^{\prime}(x) \hspace{5mm} \text{Slope of the capital market line = slope of the tangent line of the efficient frontier}\)</span></p></li>
+<li><p><span class="math inline">\(x=\sigma_{p}\)</span></p></li>
+</ul>
+<p>There are three unknown parameters and therefore we must have three equations to solve for the values of these parameters:</p>
+<p><span class="math display">\[\begin{align*}
+a=r_{f} \hspace{5mm} \Longrightarrow \hspace{5mm} 0&amp;=r_{f}-a \\
+b=f^{\prime}(x) \hspace{5mm} \Longrightarrow \hspace{5mm} 0&amp;=b-f^{\prime}(x) \\
+f(x)=a + bx \hspace{5mm} \Longrightarrow \hspace{5mm} 0&amp;=a+b\cdot x-f(x)
+\end{align*}\]</span></p>
+<p>$$ \sigma^2_n = \omega + \sum_{i=1}^p \alpha_i u^2_{n-i} +
+\sum_{i=1}^q \beta_i \sigma^2_{n-i} $$</p>
+<p>where, $p$ and $q$ are lag length.</p>
+<p><strong>GARCH(1,1)</strong> is then represented as,</p>
+<p>$$ \sigma^2_n = \omega + \alpha u^2_{n-1} + \beta
+\sigma^2_{n-1} $$</p>
+<p>where, $\alpha + \beta &lt; 1$ and $\gamma + \alpha + \beta = 1$
+as weight applied to long term variance cannot be negative.</p>
+<p>where, $\frac {\omega} {(1-\alpha-\beta)}$ is the long-run
+variance.</p>
+<p>The GARCH model is a way of specifying the dependence of the time
+varying nature of volatility. The model incorporates changes in the
+fluctuations in volatility and tracks the persistence of volatility as
+it fluctuates around its long-term average and are exponentially
+weighted.</p>
+<p>To model GARCH or the conditional volatility, we need to derive
+$\omega$, $\alpha$, $\beta$ by maximizing the likelihood
+function.</p>
 <div id="required-libraries" class="section level1">
 <h1>Required Libraries</h1>
 <pre class="python"><code># Data manipulation
