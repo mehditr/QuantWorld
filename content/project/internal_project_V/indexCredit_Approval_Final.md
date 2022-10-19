@@ -247,8 +247,8 @@ print('\n')
 
 ```
 
-     #<img src="/img/Credit_Approval_Final_8_0" alt="" />
-<img src="/img/Seaborn-Exercise_10_1.png" alt="" />
+
+<img src="./img3/Credit_Approval_Final_8_0" alt="" />
 
     
    
