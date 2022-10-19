@@ -248,10 +248,10 @@ print('\n')
 ```
 
 
-    
-![png](Credit_Approval_Final_files/Credit_Approval_Final_8_0.png)
-    
+     <img src="/img3/Credit_Approval_Final_8_0.png" alt="" />
 
+    
+   
 
     <class 'pandas.core.frame.DataFrame'>
     RangeIndex: 690 entries, 0 to 689
