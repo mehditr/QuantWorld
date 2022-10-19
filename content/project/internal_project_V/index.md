@@ -16,7 +16,7 @@ image:
   preview_only: no
 projects: []
 ---
-# Credit Card Approval    
+ 
 
 
 Generally, Banks receive lots of requests for loans or credit card however they cannot accept all.
