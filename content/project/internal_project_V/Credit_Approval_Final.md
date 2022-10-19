@@ -9,7 +9,7 @@ subtitle: ''
 summary: 'EDA and Machine Learning Techniques'
 authors: []
 lastmod: '2022-10-19T00:14:46+01:00'
-featured: no
+featured: yes
 image:
   caption: ''
   focal_point: ''
