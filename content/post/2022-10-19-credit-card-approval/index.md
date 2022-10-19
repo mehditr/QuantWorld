@@ -285,7 +285,7 @@ print('\n')
     
     
 
-#  2 - EDA and Statistical Inference
+#  2 - Exploratory Data Analysis
 Now, we have a first impression of data. The probable features in a typical credit card application are <code>Gender</code>, <code>Age</code>, <code>Debt</code>, <code>Married</code>, <code>BankCustomer</code>, <code>EducationLevel</code>, <code>Ethnicity</code>, <code>YearsEmployed</code>, <code>PriorDefault</code>, <code>Employed</code>, <code>CreditScore</code>, <code>DriversLicense</code>, <code>Citizen</code>, <code>ZipCode</code>, <code>Income</code> and finally the <code>ApprovalStatus</code>. This would be a good staring point for us, but we are not still aware of the importance of features. At the first step, I will ignore some features like <code>DriversLicense</code> and <code>ZipCode</code> as they are not informative as the other features in the dataset for predicting credit card approvals. To get a better sense, we can apply some hypothesis testing along with their visualizations to see what features are probably more important the others
 
 
