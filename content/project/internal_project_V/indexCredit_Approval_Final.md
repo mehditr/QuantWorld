@@ -247,8 +247,8 @@ print('\n')
 
 ```
 
-  <img src="/img/Credit_Approval_Final_8_0" alt="" />
-
+     #<img src="/img/Credit_Approval_Final_8_0" alt="" />
+<img src="/img/Seaborn-Exercise_10_1.png" alt="" />
 
     
    
@@ -412,7 +412,7 @@ plt.show()
 ```
 
 
-    
+<img src="/img/Credit_Approval_Final_13_0" alt="" />    
 ![png](Credit_Approval_Final_files/Credit_Approval_Final_13_0.png)
     
 
