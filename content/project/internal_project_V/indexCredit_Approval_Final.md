@@ -247,10 +247,7 @@ print('\n')
 
 ```
 
-
-
-
-<img src="/img/Credit_Approval_Final_8_0" alt="" />
+  <img src="/img/Credit_Approval_Final_8_0" alt="" />
 
 
     
