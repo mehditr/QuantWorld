@@ -616,7 +616,7 @@ plt.show()
     
 
 
-Figure_5 : There is an argue that some bank customers who are approved by the bank have more debt than others who are not their customers. In the figure above, I have split the data based on the "Bank Customer" and "Verified" attributes.
+Figure_5 : There is an argue that some bank customers who are approved by the bank have more debt than others who are not their customers. In the figure above, I have split the data based on the "Bank Customer" and "Approved" attributes.
 This graph shows that bank customers have more debts than those who are not, and this difference is significant.
 
 # 3 - Machine Learning Techniques
