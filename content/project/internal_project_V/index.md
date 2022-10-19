@@ -248,7 +248,7 @@ print('\n')
 ```
 
 <img src="/img/Credit_Approval_Final_8_0.png" alt="" />
-![png](./Credit_Approval_Final_10_0.png)
+![png](./Credit_Approval_Final_8_0.png)
 
     
    
