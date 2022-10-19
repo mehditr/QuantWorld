@@ -244,18 +244,20 @@ for col in cat:
 sns.countplot(credit.dtypes.map(str))
 plt.show()
 # Print DataFrame information
-credit_info = credit.info()
-print(credit_info)
 
-print('\n')
 
 ```
 
-
+<img src="img/Credit_Approval_Final_8_0.png" width="100" height="50" alt="" />
     
-![png](Credit_Approval_Final_files/Credit_Approval_Final_8_0.png)
+      #![png](Credit_Approval_Final_files/Credit_Approval_Final_8_0.png)
     
 
+```python
+credit_info = credit.info()
+print(credit_info)
+
+```
 
     <class 'pandas.core.frame.DataFrame'>
     RangeIndex: 690 entries, 0 to 689

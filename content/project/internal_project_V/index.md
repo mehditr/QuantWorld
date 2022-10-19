@@ -243,14 +243,12 @@ plt.show()
 credit_info = credit.info()
 print(credit_info)
 
-print('\n')
-
 ```
 
 
 <img src="/img/Credit_Approval_Final_8_0.png" alt="" />
 
-    
+
    
 
     <class 'pandas.core.frame.DataFrame'>
@@ -295,8 +293,8 @@ plt.tight_layout()
 ```
 
 
-    
-![png](Credit_Approval_Final_files/Credit_Approval_Final_10_0.png)
+<img src="/img/Credit_Approval_Final_10_0.png" alt="" />  
+
     
 
 
@@ -412,8 +410,8 @@ plt.show()
 ```
 
 
-<img src="/img/Credit_Approval_Final_13_0" alt="" />    
-![png](Credit_Approval_Final_files/Credit_Approval_Final_13_0.png)
+  
+<img src="/img/Credit_Approval_Final_13_0.png" alt="" /> 
     
 
 
@@ -434,8 +432,9 @@ print(pd.crosstab(credit.Approved, credit.Approved))
 ```
 
 
-    
-![png](Credit_Approval_Final_files/Credit_Approval_Final_15_0.png)
+
+<img src="/img/Credit_Approval_Final_15_0.png" alt="" />    
+
     
 
 
@@ -531,8 +530,9 @@ plt.show()
 ```
 
 
-    
-![png](Credit_Approval_Final_files/Credit_Approval_Final_19_0.png)
+
+<img src="/img/Credit_Approval_Final_19_0.png" alt="" /> 
+
     
 
 
@@ -611,8 +611,8 @@ plt.show()
 ```
 
 
-    
-![png](Credit_Approval_Final_files/Credit_Approval_Final_24_0.png)
+<img src="/img/Credit_Approval_Final_24_0.png" alt="" />     
+
     
 
 
