@@ -11,7 +11,7 @@ authors: []
 lastmod: '2022-10-19T01:39:59+01:00'
 featured: no
 image:
-  caption: 'Image by <a href= "https://image.cnbcfm.com/api/v1/image/106223010-1572903600548gettyimages-1012103320.jpg?v=1572903633&w=740&h=416&ffmt=webp" </a>'
+  caption: ''
   focal_point: ''
   preview_only: no
 projects: []
