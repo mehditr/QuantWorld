@@ -6,7 +6,7 @@ slug: credit-card-approval
 categories: []
 tags: []
 subtitle: ''
-summary: ''
+summary: 'EDA and Machine Learning Techniques for Credit Card Approval'
 authors: []
 lastmod: '2022-10-19T01:39:59+01:00'
 featured: no
