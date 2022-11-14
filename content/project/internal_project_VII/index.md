@@ -4,7 +4,7 @@ author: ''
 date: '2022-11-14'
 slug: kmeans-clustering
 categories: []
-tags: []
+tags: 'Machine Learning'
 subtitle: 'K-Means on Dow Jones Companies'
 summary: 'K-Means Clustering on Dow Jones Industrial Average'
 authors: []
