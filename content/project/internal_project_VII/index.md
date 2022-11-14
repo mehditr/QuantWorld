@@ -476,11 +476,6 @@ np.save(r'C:\Users\X550LD\Desktop\ML\CQF\dow_ohlc.npy', dow_ohlc)
 
 
 ```python
-#ohlc = {symbol: yf.download(symbol, start='2009-12-31',end = '2022-05-31', auto_adjust=True,progress=False) for symbol in dow_stocks}
-```
-
-
-```python
 ohlc = np.load(r'C:\Users\X550LD\Desktop\ML\CQF\dow_ohlc.npy', allow_pickle='TRUE').item()
 ohlc['MMM'].head()
 ```
