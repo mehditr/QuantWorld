@@ -574,24 +574,7 @@ print( credit[['Age','Debt','CreditScore','Income','Industry']].iloc[maxim_2])
     Industry       Healthcare
     Name: 317, dtype: object
     
-
-
-```python
-maxim_2 = credit['Income'].idxmax()
-credit[['Age','Debt','CreditScore','Income','Industry']].iloc[maxim_2]
-```
-
-
-
-
-    Age                  17.5
-    Debt                 22.0
-    CreditScore             0
-    Income             100000
-    Industry       Healthcare
-    Name: 317, dtype: object
-
-
+    
 
 The interesting thing to note here is that the highest credit score is related to the IT industry, which ranks second in "approved" programs. However, the highest revenue comes from the healthcare industry, which is the last industry to receive an approved application and both have the same amount of debt. Is there bias in these decisions?!!!!!!
 That can be a trigger for data scientists !!!
