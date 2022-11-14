@@ -730,8 +730,9 @@ missingno.matrix(stock_price,sparkline=True,figsize=(20,10))
 
 
 
-    
-![png](KMeans_Clustering_files/KMeans_Clustering_24_1.png)
+
+<img src="/img/KMeans_Clustering_24_1.png" alt="" />    
+
     
 
 
@@ -24588,8 +24589,8 @@ weekly_atr.iloc[0,:].plot()
 
 
 
-    
-![png](KMeans_Clustering_files/KMeans_Clustering_34_1.png)
+<img src="/img/KMeans_Clustering_34_1.png" alt="" />       
+
     
 
 
@@ -24958,8 +24959,8 @@ plt.legend(['inertia', '10% relative inertia', '5% relative inertia'])
 
 
 
-    
-![png](KMeans_Clustering_files/KMeans_Clustering_39_1.png)
+<img src="/img/KMeans_Clustering_39_1.png" alt="" />          
+
     
 
 
@@ -25337,8 +25338,9 @@ plt.title('Dow Stocks ATR Clustering');
 ```
 
 
-    
-![png](KMeans_Clustering_files/KMeans_Clustering_50_0.png)
+
+<img src="/img/KMeans_Clustering_50_0.png" alt="" />              
+
     
 
 
@@ -25529,8 +25531,9 @@ plt.show()
 ```
 
 
-    
-![png](KMeans_Clustering_files/KMeans_Clustering_59_0.png)
+
+<img src="/img/KMeans_Clustering_59_0.png" alt="" />                  
+
     
 
 
@@ -25983,8 +25986,9 @@ plt.show()
 ```
 
 
-    
-![png](KMeans_Clustering_files/KMeans_Clustering_67_0.png)
+
+<img src="/img/KMeans_Clustering_67_0.png" alt="" />    
+
     
 
 
@@ -26029,8 +26033,9 @@ plt.show()
 ```
 
 
-    
-![png](KMeans_Clustering_files/KMeans_Clustering_71_0.png)
+
+<img src="/img/KMeans_Clustering_71_0.png" alt="" />        
+
     
 
 
