@@ -26060,8 +26060,9 @@ plt.show()
 ```
 
 
-    
-![png](KMeans_Clustering_files/KMeans_Clustering_73_0.png)
+
+<img src="/img/KMeans_Clustering_73_0.png" alt="" />     
+
     
 
 
