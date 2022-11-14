@@ -1,5 +1,5 @@
 ---
-title: KMeans Clustering
+title: K-Means Clustering
 author: ''
 date: '2022-11-14'
 slug: kmeans-clustering
