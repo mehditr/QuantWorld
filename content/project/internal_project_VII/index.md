@@ -5,8 +5,8 @@ date: '2022-11-14'
 slug: kmeans-clustering
 categories: []
 tags: []
-subtitle: ''
-summary: ''
+subtitle: 'K-Means on Dow Jones Companies'
+summary: 'K-Means Clustering on Dow Jones Industrial Average'
 authors: []
 lastmod: '2022-11-14T16:03:30+01:00'
 featured: no
