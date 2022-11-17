@@ -875,8 +875,18 @@ svm_report(X,realized_vol,kernel='linear',n=252)
  <img src="/img/GARCH_62_1.png" alt="" />   
 
     
+#Gradient Boosting Approaches 
 
+Tree boosting is highly effective and widely used machine learning method. XGBoost stands for “Extreme Gradient Boosting”, where the term “Gradient Boosting” originates from the paper Greedy Function Approximation: A Gradient Boosting Machine, by Friedman.
 
+XGBoost, which is used widely by data scientists to achieve state-of-the-art results on many machine learning challenges. XGBoost initially started as a research project by Tianqi Chen as part of the Distributed (Deep) Machine Learning Community (DMLC) group. Initially, it began as a terminal application which could be configured using a libsvm configuration file.
+
+XGBoost was designed to be used with large, complicated datasets and is one of the most popular machine learning algorithm to deal with structured data. It is an advance version of gradient boosting method that is designed to focus on computational speed and model efficiency. XGBoost is preferred over other tree based model as it supports
+
+  - Parallelization
+  - Distributed computing methods
+  - Out-of-core computing
+  - Cache optimization
 
 ```python
 # Hyper parameter optimization
