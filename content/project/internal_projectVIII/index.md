@@ -4,7 +4,7 @@ author: ''
 date: '2022-11-17'
 slug: volatility-prediction
 categories: []
-tags: []
+tags: [Machine Learning]
 subtitle: ''
 summary: 'Volatiltiy Prediction - Old Fashioned way or Modern Techniques'
 authors: []
