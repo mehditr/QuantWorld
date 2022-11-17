@@ -6,7 +6,7 @@ slug: volatility-prediction
 categories: []
 tags: []
 subtitle: ''
-summary: ''
+summary: 'Volatiltiy Prediction - Old Fashioned way or Modern Techniques'
 authors: []
 lastmod: '2022-11-17T13:35:30+01:00'
 featured: no
@@ -103,8 +103,8 @@ plt.plot(realized_vol.index,realized_vol)
 
 
 
-    
-![png](GARCH_files/GARCH_6_1.png)
+ <img src="/img/GARCH_6_1.png" alt="" />      
+
     
 
 
