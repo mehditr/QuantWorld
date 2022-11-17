@@ -714,7 +714,7 @@ plt.show()
     
 
 
-One of the GARCH extended model that perfomrs well for asymetric returns is called GJR-GARCH. Since the asymmetric returns happen, the fatter tail exists in the distribution of losses, rather than the distribution of gains. In GJR-GARCH there is another parameter, called $\gamma$, that controls the asymmetric part. When the $\gamma = 0$, the formula is simply the GARCH and that means the effect of asymmetry is the same as past. $\gamma > 0$ tells us that past negative shock prevails its positive shock and finally  $\gamma <0$ the positive shock prevails over negative one.
+One of the GARCH extended model that perfomrs well for asymmetric returns is called GJR-GARCH. Since the asymmetric returns happen, the fatter tail exists in the distribution of losses, rather than the distribution of gains. In GJR-GARCH there is another parameter, called $\gamma$, that controls the asymmetric part. When the $\gamma = 0$, the formula is simply the GARCH and that means the effect of asymmetry is the same as past. $\gamma > 0$ tells us that past negative shock prevails its positive shock and finally  $\gamma <0$ the positive shock prevails over negative one.
 
 I am not going to manually calculate GJR-GARCH as I show it in a different post, but I will show how the effect of GJR-GARCH on RMSE and we will see how it behaves in volatility prediction
 
@@ -789,7 +789,7 @@ plt.show()
     
 
 
-# Support Vector Machine & Gradient Boosting Approaches 
+# Support Vector Machine Approach
 
 Support vector machine is a popular supervised machine learning approach and can be applied in both classification and regression problem. The general idea behind support vector machine is, choose the best line, or in linear algebra terminology a hyperplane, that maximizes the distance among points that are closest to the line or,the 'hyperplane' but actually they belong to anothe class.
 we call SVC from SVM for classification purposes and SVR for regression goals. In the regression that I will apply it, the aim is to find that minimizes the error and maximizes the margin.There are two types of margin, hard and soft and the hard margine is narrower than soft margine and it performs as the same as regularization technique. Soft margine allows more misclassified points in the model.
@@ -875,7 +875,7 @@ svm_report(X,realized_vol,kernel='linear',n=252)
  <img src="/img/GARCH_62_1.png" alt="" />   
 
     
-# Gradient Boosting Approaches 
+# Gradient Boosting Approach
 
 Tree boosting is highly effective and widely used machine learning method. XGBoost stands for “Extreme Gradient Boosting”, where the term “Gradient Boosting” originates from the paper Greedy Function Approximation: A Gradient Boosting Machine, by Friedman.
 
