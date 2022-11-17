@@ -1,4 +1,4 @@
-# Volatiltiy Prediction - Old Fashioned way or Modern Techniques
+# Volatiltiy Prediction - Old Fashioned way or Modern Techniques?
 
 In finance volatility is the backbone. Many trades, investors and investment department are following how to evaluate the volatiltiy prediction regarding the activity in various financial fields. Todays, financial markets are more integrated than before and we can see the haevy shadow of uncertainty over all. That makes the uncertainity important notion.
 
