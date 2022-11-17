@@ -10,8 +10,10 @@ For this reason I am motivated to see which approach is better by comparison bet
 will show you the mathematics behind the ARCH and GARCH and we will check the predictions in each step, based on these methods. The mathematical part can help us to understand what happens exactly behind the models and why they are different from each other.
 
 Then we are able to answer this question:
+
 Is there a significant difference between traditional fashioned way and ML techniques? 
-I have to mention that this experiment is just a glimpse of many experiments, however in realy market we have to check both way with more techniques.
+
+I have to mention that this experiment is just a glimpse of many experiments, however in the real market we have to check both approaches by more techniques.
 
 # Required Libraries
 
