@@ -956,11 +956,11 @@ predict_xgboost.index = ret.iloc[-n:].index
 ```python
 rmse_xgboost = np.sqrt(mse(realized_vol.iloc[-n:] / 100,
                        predict_xgboost / 100))
-print('The RMSE value of SVR with Linear Kernel is {:.6f}'
+print('The RMSE value of  XGBoost is {:.6f}'
       .format(rmse_xgboost))
 ```
 
-    The RMSE value of SVR with Linear Kernel is 0.000623
+    The RMSE value of XGBoost is 0.000623
     
 
 
@@ -972,14 +972,14 @@ realized_vol.index = ret.iloc[4:].index
 ```python
 plt.figure(figsize=(20, 10))
 plt.plot(realized_vol / 100, label='Realized Volatility')
-plt.plot(predict_xgboost / 100, label='Volatility Prediction-SVR-GARCH')
-plt.title('Volatility Prediction with SVR-GARCH (Linear)', fontsize=12)
-print('The RMSE value of XGBoost with Linear Kernel is {:.6f}'.format(rmse_xgboost))
+plt.plot(predict_xgboost / 100, label='Volatility Prediction-XGBoost-GARCH')
+plt.title('Volatility Prediction with XGBoost', fontsize=12)
+print('The RMSE value of XGBoost  is {:.6f}'.format(rmse_xgboost))
 plt.legend()
 plt.show()
 ```
 
-    The RMSE value of XGBoost with Linear Kernel is 0.000623
+    The RMSE value of XGBoost is 0.000623
     
 
  
