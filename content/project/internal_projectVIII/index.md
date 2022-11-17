@@ -341,8 +341,7 @@ plt.legend()
 
 
 
-    
-![png](GARCH_files/GARCH_23_1.png)
+ <img src="/img/GARCH_23_1.png" alt="" />     
     
 
 
@@ -605,8 +604,8 @@ plt.grid(axis='x')
 ```
 
 
-    
-![png](GARCH_files/GARCH_44_0.png)
+ <img src="/img/GARCH_44_0.png" alt="" />   
+
     
 
 
@@ -710,8 +709,8 @@ plt.show()
     
 
 
-    
-![png](GARCH_files/GARCH_49_1.png)
+<img src="/img/GARCH_49_1.png" alt="" />     
+
     
 
 
@@ -785,8 +784,8 @@ plt.show()
     
 
 
-    
-![png](GARCH_files/GARCH_52_1.png)
+ <img src="/img/GARCH_52_1.png" alt="" />    
+
     
 
 
@@ -859,8 +858,8 @@ svm_report(X,realized_vol,kernel='rbf',n=252)
     
 
 
-    
-![png](GARCH_files/GARCH_61_1.png)
+<img src="/img/GARCH_61_1.png" alt="" />        
+
     
 
 
@@ -873,8 +872,8 @@ svm_report(X,realized_vol,kernel='linear',n=252)
     
 
 
-    
-![png](GARCH_files/GARCH_62_1.png)
+ <img src="/img/GARCH_62_1.png" alt="" />   
+
     
 
 
@@ -973,9 +972,9 @@ plt.show()
     The RMSE value of XGBoost with Linear Kernel is 0.000623
     
 
+ 
+ <img src="/img/GARCH_69_1.png" alt="" />    
 
-    
-![png](GARCH_files/GARCH_69_1.png)
     
 
 
