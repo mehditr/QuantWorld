@@ -1,12 +1,12 @@
 ---
-title: Volatility with GARCH
+title: Volatiltiy Prediction - Old Fashioned way or Modern Techniques
 author: ''
 date: '2022-10-09'
 slug: volatility-with-garch
 categories: []
 tags: []
 subtitle: ''
-summary: ''
+summary: 'COmparison between statistical and ML approaches'
 authors: []
 lastmod: '2022-10-09T22:13:37+01:00'
 featured: no
