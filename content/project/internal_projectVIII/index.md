@@ -875,7 +875,7 @@ svm_report(X,realized_vol,kernel='linear',n=252)
  <img src="/img/GARCH_62_1.png" alt="" />   
 
     
-#Gradient Boosting Approaches 
+# Gradient Boosting Approaches 
 
 Tree boosting is highly effective and widely used machine learning method. XGBoost stands for “Extreme Gradient Boosting”, where the term “Gradient Boosting” originates from the paper Greedy Function Approximation: A Gradient Boosting Machine, by Friedman.
 
