@@ -5,7 +5,7 @@ In finance volatility is the backbone. Many trades, investors and investment dep
 Volatility is frequently used as a proxy of risk in risk management and asset pricing topics as we can see everyday recommendation in financial articles and official papers such as Basel Accord and Solvency. Therefore it is notable for institution to have a reliable model to predict the volatility. For many years quantitative analysts were using , let say, the traditional or, in other words, robust statistical method to predict volatiltiy such ARCH, GARCH and the extended versions. Although many investors are still using these methods as benchmark or somehow for their worste case scenarios, machine learning approaches in financial fields are coming more popular than before.
 Using machine learning techniques help analysts to have more percise estimation and concequently they are more informed, how much of their assets must be involved in the different investment markets. 
 
-For this reason I am motivated to see which approach is better by comparison between three traditional model, ARCH, GARCH and GJR-GARCH and two machine learning techniques which are appropriate in stock, indicies or ETF analysis such as SVR and XGBoosting. 
+For this reason, I am motivated to see which approach is better by comparison between three traditional model, ARCH, GARCH and GJR-GARCH and two machine learning techniques which are appropriate in stock, indicies or ETF analysis such as SVR and XGBoosting. 
 
 will show you the mathematics behind the ARCH and GARCH and we will check the predictions in each step, based on these methods. The mathematical part can help us to understand what happens exactly behind the models and why they are different from each other.
 
@@ -13,7 +13,7 @@ Then we are able to answer this question:
 
 Is there a significant difference between traditional fashioned way and ML techniques? 
 
-I have to mention that this experiment is just a glimpse of many experiments, however in the real market we have to check both approaches by more techniques.
+I have to mention that this experiment is just a glimpse of many experiments, however in a real market, we have to check both approaches by more techniques.
 
 # Required Libraries
 
