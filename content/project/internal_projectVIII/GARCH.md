@@ -13,7 +13,7 @@ Then we are able to answer this question:
 
 Is there a significant difference between traditional fashioned way and ML techniques? 
 
-I have to mention that this experiment is just a glimpse of many experiments, however in realy market, we have to check both approaches by more techniques.
+I have to mention that this experiment is just a glimpse of many experiments, however in the real market, we have to check both approaches by more techniques.
 
 # Required Libraries
 
