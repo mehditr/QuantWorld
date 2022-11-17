@@ -347,7 +347,7 @@ plt.legend()
 
 
 
-## GARCH<a href="#GARCH" class="anchor-link">¶</a>
+## GARCH<a href="#GARCH" class="anchor-link"></a>
 
 This method is popularly known as **Generalized
 ARCH** or **GARCH** model.  
@@ -415,7 +415,7 @@ garch(np.var(ret),0.1,0.8,ret)[:3]
 
 
 
-### Maximum Likelihood Estimation<a href="#Maximum-Likelihood-Estimation" class="anchor-link">¶</a>
+### Maximum Likelihood Estimation<a href="#Maximum-Likelihood-Estimation" class="anchor-link"></a>
 
 When using MLE, we first assume a
 distribution (ie., a parametric model) and then try to determine the
