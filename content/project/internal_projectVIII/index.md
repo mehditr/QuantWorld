@@ -21,20 +21,20 @@ projects: []
 
 # Volatiltiy Prediction - Old Fashioned way or Modern Techniques?
 
-In finance volatility is the backbone. Many trades, investors and investment department are following how to evaluate the volatiltiy prediction regarding the activity in various financial fields. Todays, financial markets are more integrated than before and we can see the haevy shadow of uncertainty over all. That makes the uncertainity important notion.
+In finance volatility is the backbone. Many trades, investors and investment department are following how to evaluate the volatiltiy prediction regarding the activity in various financial fields. Todays, financial markets are more integrated than before and we can see the heavy shadow of uncertainty over all. That makes the uncertainity an important notion.
 
-Volatility is frequently used as a proxy of risk in risk management and asset pricing topics as we can see everyday recommendation in financial articles and official papers such as Basel Accord and Solvency. Therefore it is notable for institution to have a reliable model to predict the volatility. For many years quantitative analysts were using , let say, the traditional or, in other words, robust statistical method to predict volatiltiy such ARCH, GARCH and the extended versions. Although many investors are still using these methods as benchmark or somehow for their worste case scenarios, machine learning approaches in financial fields are coming more popular than before.
-Using machine learning techniques help analysts to have more percise estimation and concequently they are more informed, how much of their assets must be involved in the different investment markets. 
+Volatility is frequently used as a proxy of risk in risk management and asset pricing topics, as we can see everyday recommendations in financial articles and official papers such as Basel Accord and Solvency. Therefore it is notable for financial institutions to have a reliable model to predict the volatility. For many years quantitative analysts have been using , let say, the traditional or, in other words, robust statistical method to predict volatiltiy such ARCH, GARCH and the extended versions. Although many investors are still using these methods as benchmark or somehow for their worste case scenarios, machine learning approaches in financial fields are coming more popular than before.
+Using machine learning techniques help analysts to have more percise estimations and concequently they are more informed, how much of their assets must be involved in the different investment markets. 
 
-For this reason I am motivated to see which approach is better by comparison between three traditional model, ARCH, GARCH and GJR-GARCH and two machine learning techniques which are appropriate in stock, indicies or ETF analysis such as SVR and XGBoosting. 
+For this reason I am motivated to consider which approach is better by comparison among three traditional models, ARCH, GARCH and GJR-GARCH and two machine learning techniques which are appropriate in stock, indicies or ETF analysis such as SVR and XGBoosting. 
 
-will show you the mathematics behind the ARCH and GARCH and we will check the predictions in each step, based on these methods. The mathematical part can help us to understand what happens exactly behind the models and why they are different from each other.
+I will show you the mathematics behind the ARCH and GARCH and we will check the predictions in each step, based on these methods. The mathematical part can help us to understand what happens exactly behind the models and why they are different from each other.
 
 Then we are able to answer this question:
 
 Is there a significant difference between traditional fashioned way and ML techniques? 
 
-I have to mention that, this experiment is just a glimpse of many experiments, however in the real market we have to check both way with more techniques.
+I have to mention that, this experiment is just a glimpse of many experiments, however in the real market we have to check both ways with more techniques.
 
 # Required Libraries
 
