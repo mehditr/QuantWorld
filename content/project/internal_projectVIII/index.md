@@ -21,7 +21,7 @@ projects: []
 
 # Volatiltiy Prediction - Old Fashioned way or Modern Techniques?
 
-In finance volatility is the backbone. Many trades, investors and investment department are following how to evaluate the volatiltiy prediction regarding the activity in various financial fields. Todays, financial markets are more integrated than before and we can see the heavy shadow of uncertainty over all. That makes the uncertainity an important notion.
+In finance volatility is the backbone. Many traders, investors and investment department are following how to evaluate the volatiltiy prediction regarding the activity in various financial fields. Todays, financial markets are more integrated than before and we can see the heavy shadow of uncertainty over all. That makes the uncertainity an important notion.
 
 Volatility is frequently used as a proxy of risk in risk management and asset pricing topics, as we can see everyday recommendations in financial articles and official papers such as Basel Accord and Solvency. Therefore it is notable for financial institutions to have a reliable model to predict the volatility. For many years quantitative analysts have been using , let say, the traditional or, in other words, robust statistical method to predict volatiltiy such ARCH, GARCH and the extended versions. Although many investors are still using these methods as benchmark or somehow for their worste case scenarios, machine learning approaches in financial fields are coming more popular than before.
 Using machine learning techniques help analysts to have more percise estimations and concequently they are more informed, how much of their assets must be involved in the different investment markets. 
@@ -794,8 +794,8 @@ plt.show()
 
 # Support Vector Machine Approach
 
-Support vector machine is a popular supervised machine learning approach and can be applied in both classification and regression problem. The general idea behind support vector machine is, choose the best line, or in linear algebra terminology a hyperplane, that maximizes the distance among points that are closest to the line or,the 'hyperplane' but actually they belong to anothe class.
-we call SVC from SVM for classification purposes and SVR for regression goals. In the regression that I will apply it, the aim is to find that minimizes the error and maximizes the margin.There are two types of margin, hard and soft and the hard margine is narrower than soft margine and it performs as the same as regularization technique. Soft margine allows more misclassified points in the model.
+Support vector machine is a popular supervised machine learning approach and can be applied in both classification and regression problem. The general idea behind support vector machine is, choose the best line, or in linear algebra terminology a 'hyperplane', that maximizes the distance among points that are closest to the line or,the 'hyperplane' but actually they belong to another class.
+we call SVC from SVM for classification purposes and SVR for regression goals. In the regression that I will apply it, the aim is to find that minimizes the error and maximizes the margin.There are two types of margin, hard and soft and the hard margin is narrower than soft margine and it performs as the same as regularization technique. Soft margin allows more misclassified points in the model.
 
 
 ```python
@@ -993,7 +993,7 @@ plt.show()
 
 # Conclusion
 
-In summary, as we have seen at the SVR and XGBoosting outperforme rather than the ARCH-GARCH models in respect with the RMSEs. The statistical models are more overstimated and might be good in respect of Basel Accord approaches, but in internal reports one might use ML techniques. However, this is what we have seen according to the ticker ***S&P500*** in the given time. I am almost pretty sure for other tickers or different industries such gold or Gold ETF the result might be changed and GJR-GARCH is probably pioneer there. We must pay attention that ***monitoring*** is a crucial step in risk managemnt and for getting a reliable and stable model, we should monitor our result in different aspects.
+In summary, as we have seen at the SVR and XGBoosting outperform rather than the ARCH-GARCH models in respect with the RMSEs. The statistical models are more overestimated and might be good in respect of Basel Accord approaches, but in internal reports one might use ML techniques. However, this is what we have seen according to the ticker ***S&P500*** in the given time. I am almost pretty sure for other tickers or different industries such gold or Gold ETF the result might be changed and GJR-GARCH is probably pioneer there. We must pay attention that ***monitoring*** is a crucial step in risk management and for getting a reliable and stable model, we should monitor our result in different aspects.
 
 
 ```python
