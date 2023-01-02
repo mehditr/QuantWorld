@@ -6,22 +6,19 @@ slug: credit-card-approval
 categories: []
 tags: []
 subtitle: ''
-summary: ''
+summary: 'EDA and Machine Learning Techniques for Credit Card Approval'
 authors: []
 lastmod: '2022-10-19T01:39:59+01:00'
 featured: no
 image:
+  placement: 3
   caption: ''
   focal_point: ''
   preview_only: no
 projects: []
 ---
 
-
-
-
-
-
+ 
 # Credit Card Approval    
 
 
@@ -244,20 +241,16 @@ for col in cat:
 sns.countplot(credit.dtypes.map(str))
 plt.show()
 # Print DataFrame information
-
-
-```
-
-<img src="img/Credit_Approval_Final_8_0.png" width="100" height="50" alt="" />
-    
-      #![png](Credit_Approval_Final_files/Credit_Approval_Final_8_0.png)
-    
-
-```python
 credit_info = credit.info()
 print(credit_info)
 
 ```
+
+
+<img src="/img/Credit_Approval_Final_8_0.png" alt="" />
+
+
+   
 
     <class 'pandas.core.frame.DataFrame'>
     RangeIndex: 690 entries, 0 to 689
@@ -301,8 +294,8 @@ plt.tight_layout()
 ```
 
 
-    
-![png](Credit_Approval_Final_files/Credit_Approval_Final_10_0.png)
+<img src="/img/Credit_Approval_Final_10_0.png" alt="" />  
+
     
 
 
@@ -418,8 +411,8 @@ plt.show()
 ```
 
 
-    
-![png](Credit_Approval_Final_files/Credit_Approval_Final_13_0.png)
+  
+<img src="/img/Credit_Approval_Final_13_0.png" alt="" /> 
     
 
 
@@ -440,8 +433,9 @@ print(pd.crosstab(credit.Approved, credit.Approved))
 ```
 
 
-    
-![png](Credit_Approval_Final_files/Credit_Approval_Final_15_0.png)
+
+<img src="/img/Credit_Approval_Final_15_0.png" alt="" />    
+
     
 
 
@@ -537,8 +531,9 @@ plt.show()
 ```
 
 
-    
-![png](Credit_Approval_Final_files/Credit_Approval_Final_19_0.png)
+
+<img src="/img/Credit_Approval_Final_19_0.png" alt="" /> 
+
     
 
 
@@ -580,24 +575,7 @@ print( credit[['Age','Debt','CreditScore','Income','Industry']].iloc[maxim_2])
     Industry       Healthcare
     Name: 317, dtype: object
     
-
-
-```python
-maxim_2 = credit['Income'].idxmax()
-credit[['Age','Debt','CreditScore','Income','Industry']].iloc[maxim_2]
-```
-
-
-
-
-    Age                  17.5
-    Debt                 22.0
-    CreditScore             0
-    Income             100000
-    Industry       Healthcare
-    Name: 317, dtype: object
-
-
+    
 
 The interesting thing to note here is that the highest credit score is related to the IT industry, which ranks second in "approved" programs. However, the highest revenue comes from the healthcare industry, which is the last industry to receive an approved application and both have the same amount of debt. Is there bias in these decisions?!!!!!!
 That can be a trigger for data scientists !!!
@@ -617,12 +595,12 @@ plt.show()
 ```
 
 
-    
-![png](Credit_Approval_Final_files/Credit_Approval_Final_24_0.png)
+<img src="/img/Credit_Approval_Final_24_0.png" alt="" />     
+
     
 
 
-Figure_5 : There is an argue that some bank customers who are approved by the bank have more debt than others who are not their customers. In the figure above, I have split the data based on the "Bank Customer" and "Verified" attributes.
+Figure_5 : There is an argue that some bank customers who are approved by the bank have more debt than others who are not their customers. In the figure above, I have split the data based on the "Bank Customer" and "Approved" attributes.
 This graph shows that bank customers have more debts than those who are not, and this difference is significant.
 
 # 3 - Machine Learning Techniques
@@ -1495,3 +1473,7 @@ SVM_report(X_train,y_train,X_test,y_test,C=10,gamma=0.01,kernel='rbf')
 
 
 In the last step for SVM, we see an improvment in <code>'recall'</code> but a decrease in <code>'Accuracy'</code>. Sometimes in classification problems, data scientists look at the <code>'f1_score'</code> and then <code>'recall'</code>. For those who consider the weight of <code>'f1_score'</code> and <code>'recall'</code> more in classification, this result might be valuable.
+
+
+
+
