@@ -714,7 +714,7 @@ plt.title("Fitting Normal - distribution for portfolio retrun", weight="bold")
 np.random.seed(42)
 
 # Number of simulations
-n_sims = 10000
+n_sims = 5000
 
 # Simulate returns and sort
 tdf, tmean, tsigma = scipy.stats.t.fit(port_rets)
@@ -734,9 +734,9 @@ print(tabulate(mctable,headers=header))
 
     Confidence Level      Value At Risk
     ------------------  ---------------
-    90%                      -0.0141135
-    95%                      -0.0190269
-    99%                      -0.0300651
+    90%                      -0.0143352
+    95%                      -0.0195043
+    99%                      -0.0318826
     
 
 
