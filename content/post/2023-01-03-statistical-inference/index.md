@@ -1,5 +1,5 @@
 ---
-title: Statistical Inference
+title: Statistical Inference - Part I
 author: ''
 date: '2023-01-03'
 slug: statistical-inference
