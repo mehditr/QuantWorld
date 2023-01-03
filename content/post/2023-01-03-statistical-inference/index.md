@@ -16,7 +16,7 @@ image:
   preview_only: no
 projects: []
 ---
-# Statistical Inference
+
 
 The goal of ***Explanatory Data Analysis*** is to extract some information and knowledge about dataset and its components especially before going through a deep data analysis or machine learning parts. One the primary steps in this way is, ***Statistical Inference*** that leads us to discuss and create the meaningful questions about the variables.
 
