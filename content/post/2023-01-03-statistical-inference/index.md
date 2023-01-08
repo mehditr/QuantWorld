@@ -18,13 +18,13 @@ projects: []
 ---
 
 
-The goal of ***Explanatory Data Analysis*** is to extract some information and knowledge about dataset and its components especially before going through a deep data analysis or machine learning parts. One the primary steps in this way is, ***Statistical Inference*** that leads us to discuss and create the meaningful questions about the variables.
+The goal of ***Explanatory Data Analysis*** is to extract some information and knowledge about dataset and its components especially before going through a deep data analysis or machine learning parts. One of the primary steps in this way is, ***Statistical Inference*** that leads us to discuss and create the meaningful questions about the variables.
 
-This is the fact that machine learning helps scientists to create a prediction models (in supervised learning ) and decsribe the data structure and finding specific patterns (in unsupervised learning), however, it is invetible that machine learning tells us nothing about parameter estimation or and specific answers for some univariate analysis. 
-As statistics is vital steps for data modeling and machine learning also, many scientists are trying to find some relations in univariate analysis. Fore instance it important for them to know is ***Education*** statistically a relevant variable to explain the default rate?  
+This is the fact that machine learning helps scientists to create a prediction models (in supervised learning ), describes the data structure and finds specific patterns (in unsupervised learning). However, it is inevitable that machine learning tells us nothing about parameter estimation and specific answers for some univariate analysis. 
+As a vital step for data modeling and machine learning, many scientists are trying to find some relations in univariate analysis. Fore instance it is important for them to know is ***Education*** statistically a relevant variable to explain the default rate?  
 Such questions lead us to create ***hypothesis testing*** examination to find out significant variables in the univariate analysis. 
 
-In the recent post about [Credit Approval](https://quantworld.netlify.app/post/credit-card-approval/), I intended to explain more about machine learning techniques and tuning the hyperparameters and also some ***EDA*** at the first of the post, but now I would like to consider some hypothesis testing about the credit approval dataset and see how we can extract some informative knowledge variables, specially when the variables are skewed. This might happen more in unbalanced dataset.
+In the recent post about [Credit Approval](https://quantworld.netlify.app/post/credit-card-approval/), I have intended to explain more about machine learning techniques and tuning the hyperparameters and also some ***EDA*** at the first of the post, but now I would like to consider some hypothesis testing about the credit approval dataset and see how we can extract some informative knowledge variables, specially when the variables are skewed. This might happen more in unbalanced dataset.
 
 
 ```python
@@ -183,9 +183,9 @@ credit.head()
 
 
 
-One the ***EDA*** done in the Credit Aprroval investigation, there was a claim that [***bank customer has more debt that non-bank customer***](https://quantworld.netlify.app/img/Credit_Approval_Final_24_0.png). This statement might be true or not for gender variable. So, for having more consideration about these statements, we will create two hypothesis testings regarding being customer of the bank and Gender in respect to Debt which they might be important for getting the approval for credit card.
+One the ***EDA*** done in the Credit Aprroval investigation, there was a claim that [***bank customer has more debt that non-bank customer***](https://quantworld.netlify.app/img/Credit_Approval_Final_24_0.png). This statement might be true or not for gender variable. Therefore, to further investigate these claims, I develop two hypothesis test about bank customership and gender in terms of 'Debt', which may be important for credit card approval.
 
-So, first of all, we will see both distributions are right skewed 
+First of all, we will see both distributions are right skewed 
 
 
 ```python
@@ -380,7 +380,7 @@ To check this issue and answer the question above, we can consider the following
     - H0 : There is no differnece in Debt between Male and Female
     - H1 : There is a significant difference in Debt between Male and Female
 
-For this purposes we need to determine the p-value to check wether a variable is statistically significant or not. For getting the p-value I will shaffle the data or labels repeatedly and calculate the desired statistics. So, p-value can be in the range of 1% to 10% and that means we have confidence interval to accept or reject the null hypothesis.
+For this purposes we need to determine the p-value to check whether a variable is statistically significant or not. For getting the p-value I will shuffle the data or labels repeatedly and calculate the desired statistics. The p-value can be in the range of 1% to 10% and that means we have confidence interval to accept or reject the null hypothesis.
 Let's assume the range of $\alpha$ in ***(1%,5%,10%)***
 
 # Bank Customer and Debt
@@ -533,8 +533,8 @@ pvalue
 
 
 
-So, interesting. We have determined that the p-value and based on the selected $\alpha$ we can decide is the null hypothesis will be rejected or not. As the p_value is a bit more than 1%, with this percentage we cannot reject null hypothesis. Although choosing $\alpha$ depends on the context and the goal you deserve it, 1% for $\alpha$ is a strict choice. 
-Considered other $\alpha$, ***5%*** which it is commonly used, we can reject null hypothesis and this means there is a significant difference in Debt between being a bank customer or not a bank customer that was obvious in the following figure [***bank customer has more debt that non-bank customer***](https://quantworld.netlify.app/img/Credit_Approval_Final_24_0.png).
+So, interesting. We have determined the p-value and based on the selected $\alpha$ we can decide, the null hypothesis will be rejected or not. As the p_value is a bit more than 1%, with this percentage we cannot reject null hypothesis. Although choosing $\alpha$ depends on the context and the goal you deserve, 1% for $\alpha$ is a strict choice. 
+Considered other $\alpha$, ***5%*** which it is commonly used, we can reject null hypothesis and this means there is a significant difference in Debt between being a bank customer or not that was obvious in the following figure [***bank customer has more debt that non-bank customer***](https://quantworld.netlify.app/img/Credit_Approval_Final_24_0.png).
 
 Now let's repeat the experiment for Gender variable and see the result
 
