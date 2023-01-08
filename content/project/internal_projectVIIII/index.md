@@ -6,7 +6,7 @@ slug: value-at-risk
 categories: []
 tags: [Finance]
 subtitle: ''
-summary: 'VaR and CVaR calculation and solved an EWMA case '
+summary: 'VaR and CVaR calculation and solve an EWMA case '
 authors: []
 lastmod: '2023-01-02T12:46:51+01:00'
 featured: no
@@ -261,9 +261,9 @@ plt.show()
 
 <font size="4">__Variance - Covariance or Parametric Approach__</font>
 
-The Variance - Covariance approach mostly assumes that the returns are normally distributed.ALthough there is alternative distribution such as t-distribution, I will talk about in Monte Carlo section.
+The Variance - Covariance approach mostly assumes that the returns are normally distributed.Although there is alternative distribution such as t-distribution, I will talk about in Monte Carlo section.
 In this method we first calculate the mean and standard deviation of the returns to derive the risk metric. 
-Based on the assumption of normality, we can generalise: 
+Based on the assumption of normality, we can generalize: 
  - **confidence interval 90%**  $\rightarrow$  ***VaR*** = $\mu - 1.29 * \sigma $
  - **confidence interval 95%**  $\rightarrow$  ***VaR*** = $\mu - 1.64 * \sigma $
  - **confidence interval 95%**  $\rightarrow$  ***VaR*** = $\mu - 2.33 * \sigma $
@@ -504,7 +504,7 @@ print(f'Portfolio VaR at 95% confidence level {norm.ppf(1-0.95,port_ret,port_std
 
 As we can see the VaR for the current portfolio is **2.39%** which is much less than the individual VaRs. This indicates the effect of diversification by having different stocks in the basket
 
-As we have seen the calculation of Variance - Covariance approach, there are some advantages and disadvantages of applying this model. Although the advantages are such that the calculation of model is easy and there is no need to a large numbers of samples, however the disadvantages such as normall distribution assumption, nonlinear patterns and covariance matrix, make enough sense for analysts to skip applying that.
+As we have seen the calculation of Variance - Covariance approach, there are some advantages and disadvantages of applying this model. Although the advantages are such that the calculation of model is easy and there is no need to a large numbers of samples, however the disadvantages such as normal distribution assumption, nonlinear patterns and covariance matrix, make enough sense for analysts to skip applying that.
 There is also a naive way to eliminate the **'normal distribution'** assumption called ***Historical VaR .***
 
 <font size="4">__Historical VaR Approach__</font>
@@ -532,15 +532,15 @@ print(tabulate(htable,headers=header))
     99%                      -0.0391651
     
 
-<p style='text-align: justify;'>  As it has been shown, the calculation of historical VaR is fairly easy and it does not need to follow the normal distribution and it is suitable for non-normal assumption. However this method requires a large sample of data and it laso needs a powerful computating power as we need to store and work with all tickres data. One important deficit that both methods, parametric and historical VaR do not provide for us is, there is no different scenarios to and their tendencies. This problem can be solved by a powerfull method in finance called "Monte Carlo simulation" </p>
+<p style='text-align: justify;'>  As it has been shown, the calculation of historical VaR is fairly easy and it does not need to follow the normal distribution and it is suitable for non-normal assumption. However this method requires a large sample of data and it also needs a powerful computation power as we need to store and work with all tickers. One important deficit that both methods, parametric and historical VaR do not provide for us is, there is no different scenarios to and their tendencies. This problem can be solved by a powerful method in finance called "Monte Carlo simulation" </p>
 
 <font size="4">__Monte Carlo simulation Approach__</font>
 
-***Monte Carlo simulation*** is a popular numerical technique in finance and quatitative analysts are applying it when there is no colsed-form solution.
+***Monte Carlo simulation*** is a popular numerical technique in finance and quantitative analysts are applying it when there is no closed-form solution.
 
 The Monte Carlo simulation approach has a number of similarities to historical simulation. It allows us to use actual historical distributions rather than having to assume normal returns. As returns are assumed to follow a normal distribution, we could generate n simulated returns with the same mean and standard deviation (derived from the daily returns) and then sorted in ascending order to calculate maximum possible loss for a given confidence level.
 
-In most cases, Monte Carlo is simulated by normal distribution, as we know this subject as a negative point and I indicated in the first method. In finance an alternative distribution for normal is ***t - distribution***  ***(or t - Student distribution )*** as it has fatter tails than normal distribution and more values are located in the tails of t-distribution. Sometimes quantitative analysts use ***uniform distribution*** and then generating the paths and Monte Carlo simulation.
+In most cases, Monte Carlo is simulated by normal distribution, as we know this subject as a negative point and I indicated in the first method. In finance an alternative distribution for normal is ***t - distribution***  ***(or t - Student distribution )*** as it has fatter tails than normal distribution and more values are located in the tails of t-distribution.
 
 
 Now, lets consider ***Apple and IBM*** prices and see what scenarios we face with Monte Carlo simulation based on normal distributions.
@@ -620,8 +620,8 @@ MC_Algo(df_2,'IBM',500,100)
     
 
 
-As I mentioned befor, an alternative and more percise way is ***t - distribution***. For the first step let's compare which distribution is better for 'IBM' stock. 
-Note that, for generating random numbers based on t distribution, we need to have a component called ***Degree of freedom***. We can extract this item by fitting t - distribution on retruns and apply qq plot to see the differences on that.
+As I mentioned before, an alternative and more precise way is ***t - distribution***. For the first step let's compare which distribution is better for 'IBM' stock. 
+Note that, for generating random numbers based on t distribution, we need to have a component called ***Degree of freedom***. We can extract this item by fitting t - distribution on returns and apply qq plot to see the differences on that.
 
 
 ```python
@@ -794,15 +794,15 @@ print(tabulate(ctable,headers=cheader))
 
 <font size="4">__Rmetrics or EWMA model__</font>
 
-As a market risk analyst, each day we calculate ***VaR*** from the available priordata. Then, we wait ten days to compare our prediction value ***VaRt−10*** to the realised return and check
-if the prediction about the worst loss was breached. You are given a dataset with Closing Prices.
+As a market risk analyst, each day we calculate ***VaR*** from the available prior data. Then, we wait ten days to compare our prediction value ***VaRt−10*** to the realized return and check
+if the prediction about the worst loss was breached. We are given a dataset with Closing Prices of S&P500.
 We implement VaR backtesting by computing ***99%/10day Value at Risk*** using the rolling window of 21
-returns to compute σ. The report the percentage of ***VaR*** breaches and number of consecutive
+returns to compute $\sigma$. The report the percentage of ***VaR*** breaches and number of consecutive
 breaches are needed here.We also Provide a plot which clearly identifies breaches.
 
-• For comparison, implement backtesting using variance forecast equation below (recompute on each
+For comparison, implement backtesting using variance forecast equation below (recompute on each
 day). Rolling window of 21 remains for $\sigma^2$ (past variance) computation. The equation is known as
-EWMA model, and you can check how variance forecast is done in the relevant lecture.
+EWMA model, and we can check how variance forecast is done in the relevant lecture.
 
 $\sigma^2_{t+1|t} = \lambda \sigma^2_{t|t-1} + (1 - \lambda) r^2_t $
 
