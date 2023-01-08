@@ -5,8 +5,8 @@ date: '2023-01-03'
 slug: statistical-inference
 categories: []
 tags: []
-subtitle: ''
-summary: ''
+subtitle: 'Introduction to Statistical Inference'
+summary: 'Statistical Inference and Hypothesis Testing'
 authors: []
 lastmod: '2023-01-03T14:55:33+01:00'
 featured: no
@@ -20,7 +20,7 @@ projects: []
 
 The goal of ***Explanatory Data Analysis*** is to extract some information and knowledge about dataset and its components especially before going through a deep data analysis or machine learning parts. One of the primary steps in this way is, ***Statistical Inference*** that leads us to discuss and create the meaningful questions about the variables.
 
-This is the fact that machine learning helps scientists to create a prediction models (in supervised learning ), describes the data structure and finds specific patterns (in unsupervised learning). However, it is inevitable that machine learning tells us nothing about parameter estimation and specific answers for some univariate analysis. 
+This is the fact that machine learning helps scientists to create a prediction models (supervised learning), describes the data structure and finds specific patterns (unsupervised learning). However, it is inevitable that machine learning tells us nothing about parameter estimation and specific answers for some univariate analysis. 
 As a vital step for data modeling and machine learning, many scientists are trying to find some relations in univariate analysis. Fore instance it is important for them to know is ***Education*** statistically a relevant variable to explain the default rate?  
 Such questions lead us to create ***hypothesis testing*** examination to find out significant variables in the univariate analysis. 
 
