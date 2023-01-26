@@ -11,7 +11,7 @@ authors: []
 lastmod: '2023-01-26T21:33:05+01:00'
 featured: no
 image:
-  placement:3
+  placement: 2
   caption: ''
   focal_point: ''
   preview_only: no
