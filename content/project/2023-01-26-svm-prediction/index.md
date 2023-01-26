@@ -2,8 +2,8 @@
 title: SVM_Prediction
 author: ''
 date: '2023-01-26'
-slug: svm-prediction
-categories: []
+slug: Support Vector Machine - Stock Prediction
+categories: [Machine Learning]
 tags: []
 subtitle: ''
 summary: ''
@@ -11,6 +11,7 @@ authors: []
 lastmod: '2023-01-26T21:33:05+01:00'
 featured: no
 image:
+  placement: 6
   caption: ''
   focal_point: ''
   preview_only: no
@@ -2330,7 +2331,7 @@ print(classification_report(df_sign_0['Sign'],df_sign_0['Signal']))
     
     
 
-In summary, I this project we started by loading data and creating our features we need to predict the positive movement. Then we examined some primary variables with our target variable called ‘Sign’ and see how the graphs and numbers behave when we changed the hyper parameters and variables on train and validation data sets. Then we decided to create two models on with all variables and the other with selected features which we extracted from univariate feature selection. Then we ran the model with default parameters and then optimized that by grid searching and refitted again and took the metrics. We saw this path for both model and finally we get the confusion matrix and classification reports for uptrends and downtrends movements which we can see in the table below. 
+In summary, in this project we started by loading data and creating our features we need to predict the positive movement. Then we examined some primary variables with our target variable called ‘Sign’ and see how the graphs and numbers behave when we changed the hyper parameters and variables on train and validation data sets. Then we decided to create two models on with all variables and the other with selected features which we extracted from univariate feature selection. Then we ran the model with default parameters and then optimized that by grid searching and refitted again and took the metrics. We saw this path for both model and finally we get the confusion matrix and classification reports for uptrends and downtrends movements which we can see in the table below. 
 
 **References:**
 
