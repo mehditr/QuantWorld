@@ -43,8 +43,8 @@ feature:
   name: Jupyter Notebook
   
 - description:
-  icon: chart-simple                   
-  icon_pack: fab
+  icon: "power bi"                   
+  icon_pack: fas
   name: Power BI
 
 #- description: 100%
