@@ -44,7 +44,7 @@ feature:
   
 - description:
   icon: chart-user                   
-  icon_pack: fas
+  icon_pack: fab
   name: Power BI
 
 #- description: 100%
