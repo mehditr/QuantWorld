@@ -1,12 +1,12 @@
 ---
-title: ''
+title: ' Stock Price Prediction - Part I'
 author: ''
 date: '2023-01-26'
 slug: Support Vector Machine - Stock Prediction
 categories: []
 tags: [Machine Learning]
 subtitle: ''
-summary: ''
+summary: 'Prediction up-trends Stock Price by Support Vector Machine'
 authors: []
 lastmod: '2023-01-26T21:33:05+01:00'
 featured: no
