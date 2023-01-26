@@ -43,8 +43,8 @@ feature:
   name: Jupyter Notebook
   
 - description:
-  icon: "powerbi"                   
-  icon_pack: ai
+  icon: microsoft      
+  icon_pack: fab
   name: Power BI
 
 #- description: 100%
