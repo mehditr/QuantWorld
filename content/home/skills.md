@@ -43,7 +43,7 @@ feature:
   name: Jupyter Notebook
   
 - description:
-  icon: book                   
+  icon: chart-user                   
   icon_pack: fas
   name: Power BI
 
