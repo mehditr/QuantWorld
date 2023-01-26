@@ -3,8 +3,8 @@ title: ''
 author: ''
 date: '2023-01-26'
 slug: Support Vector Machine - Stock Prediction
-categories: [Machine Learning]
-tags: []
+categories: []
+tags: [Machine Learning]
 subtitle: ''
 summary: ''
 authors: []
