@@ -44,7 +44,7 @@ feature:
   
 - description:
   icon: "powerbi"                   
-  icon_pack: fas
+  icon_pack: ai
   name: Power BI
 
 #- description: 100%
