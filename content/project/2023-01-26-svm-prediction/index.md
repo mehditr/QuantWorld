@@ -1,5 +1,5 @@
 ---
-title: SVM_Prediction
+title: ''
 author: ''
 date: '2023-01-26'
 slug: Support Vector Machine - Stock Prediction
@@ -11,7 +11,7 @@ authors: []
 lastmod: '2023-01-26T21:33:05+01:00'
 featured: no
 image:
-  placement: 6
+  placement:3
   caption: ''
   focal_point: ''
   preview_only: no
