@@ -29,6 +29,8 @@ content:
     tag: '*'
   - name: Deep Learning
     tag: Deep Learning
+  - name: Finance
+    tag: Finance
   - name: Machine Learning
     tag: Machine Learning
   - name: Other
