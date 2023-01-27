@@ -42,6 +42,6 @@ superuser: true
 title: Mohammad Torbati
 ---
 
-Hello and welcome to my personal website. I have 10 years of experience in finance and insurance industries and I am very interested in working with data in decision making areas. In the words of Ronald Coase "if you torture the data long enough, it will confess to anything". The knowledge of statistics and mathematics has helped me a lot in this way so that I can gain experience in the mentioned areas and also equip myself for challenges in other areas in data science. In this website, I talk about my experiences in different projects and reveal the details that may be ignored in them.
+Hello and welcome to my personal website. I have 10 years of experience in finance and insurance industries and I am very interested in working with data in decision making areas. In the words of Ronald Coase "if you torture the data long enough, it will confess to anything". The knowledge of statistics and mathematics has helped me to deeply dive into the data subject and I have epanded my experience in the mentioned areas and also equiped myself for challenges in other areas in data science. In this website, I talk about my experiences in different projects and reveal the details that may be ignored in them.
 
 
