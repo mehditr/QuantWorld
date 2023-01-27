@@ -27,12 +27,12 @@ content:
   filter_button:
   - name: All
     tag: '*'
-  - name: Deep Learning
-    tag: Deep Learning
   - name: Finance
     tag: Finance
   - name: Machine Learning
     tag: Machine Learning
+  - name: Deep Learning
+    tag: Deep Learning
   - name: Other
     tag: Demo
 
