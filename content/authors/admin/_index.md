@@ -18,7 +18,7 @@ interests:
 organizations:
 - name: IU International University
   url: https://www.iu.de/
-role: Visiting Lecturer 
+role: University Lecturer 
 social:
 - icon: envelope
   icon_pack: fas
