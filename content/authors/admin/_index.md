@@ -5,6 +5,9 @@ education:
   - course: MSc in Actuarial Science
     institution: University of Southampton
     year: 2011
+  - course: Certificate in Quantitative Finance
+    institution: CQF & FitchLearning
+    year: 2022-2023
 
 
 email: "mehditr64@gmail.com"
